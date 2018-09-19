@@ -57,25 +57,19 @@ class Subscriber implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'address' => 'string',
-        'city' => 'string',
-        'country' => 'string',
+        'billing_address' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Address',
+        'company' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Company',
+        'create_date' => '\DateTime',
         'email' => 'string',
-        'gsm_number' => 'string',
-        'identity_number' => 'string',
-        'ip' => 'string',
-        'last_login_date' => 'string',
+        'id' => 'int',
+        'identification_no' => 'string',
         'name' => 'string',
-        'registration_date' => 'string',
+        'phone_number' => 'string',
         'secure_id' => 'string',
-        'shipping_address' => 'string',
-        'shipping_city' => 'string',
-        'shipping_country' => 'string',
-        'shipping_name' => 'string',
-        'shipping_zip_code' => 'string',
+        'shipping_address' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Address',
         'surname' => 'string',
-        'use_billing_address_for_shipping' => 'bool',
-        'zip_code' => 'string'
+        'tax_number' => 'string',
+        'works_for' => 'string'
     ];
 
     /**
@@ -84,25 +78,19 @@ class Subscriber implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'address' => null,
-        'city' => null,
-        'country' => null,
+        'billing_address' => null,
+        'company' => null,
+        'create_date' => 'date-time',
         'email' => null,
-        'gsm_number' => null,
-        'identity_number' => null,
-        'ip' => null,
-        'last_login_date' => null,
+        'id' => 'int64',
+        'identification_no' => null,
         'name' => null,
-        'registration_date' => null,
+        'phone_number' => null,
         'secure_id' => null,
         'shipping_address' => null,
-        'shipping_city' => null,
-        'shipping_country' => null,
-        'shipping_name' => null,
-        'shipping_zip_code' => null,
         'surname' => null,
-        'use_billing_address_for_shipping' => null,
-        'zip_code' => null
+        'tax_number' => null,
+        'works_for' => null
     ];
 
     /**
@@ -132,25 +120,19 @@ class Subscriber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'address' => 'address',
-        'city' => 'city',
-        'country' => 'country',
+        'billing_address' => 'billingAddress',
+        'company' => 'company',
+        'create_date' => 'createDate',
         'email' => 'email',
-        'gsm_number' => 'gsmNumber',
-        'identity_number' => 'identityNumber',
-        'ip' => 'ip',
-        'last_login_date' => 'lastLoginDate',
+        'id' => 'id',
+        'identification_no' => 'identificationNo',
         'name' => 'name',
-        'registration_date' => 'registrationDate',
+        'phone_number' => 'phoneNumber',
         'secure_id' => 'secureId',
         'shipping_address' => 'shippingAddress',
-        'shipping_city' => 'shippingCity',
-        'shipping_country' => 'shippingCountry',
-        'shipping_name' => 'shippingName',
-        'shipping_zip_code' => 'shippingZipCode',
         'surname' => 'surname',
-        'use_billing_address_for_shipping' => 'useBillingAddressForShipping',
-        'zip_code' => 'zipCode'
+        'tax_number' => 'taxNumber',
+        'works_for' => 'worksFor'
     ];
 
     /**
@@ -159,25 +141,19 @@ class Subscriber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'address' => 'setAddress',
-        'city' => 'setCity',
-        'country' => 'setCountry',
+        'billing_address' => 'setBillingAddress',
+        'company' => 'setCompany',
+        'create_date' => 'setCreateDate',
         'email' => 'setEmail',
-        'gsm_number' => 'setGsmNumber',
-        'identity_number' => 'setIdentityNumber',
-        'ip' => 'setIp',
-        'last_login_date' => 'setLastLoginDate',
+        'id' => 'setId',
+        'identification_no' => 'setIdentificationNo',
         'name' => 'setName',
-        'registration_date' => 'setRegistrationDate',
+        'phone_number' => 'setPhoneNumber',
         'secure_id' => 'setSecureId',
         'shipping_address' => 'setShippingAddress',
-        'shipping_city' => 'setShippingCity',
-        'shipping_country' => 'setShippingCountry',
-        'shipping_name' => 'setShippingName',
-        'shipping_zip_code' => 'setShippingZipCode',
         'surname' => 'setSurname',
-        'use_billing_address_for_shipping' => 'setUseBillingAddressForShipping',
-        'zip_code' => 'setZipCode'
+        'tax_number' => 'setTaxNumber',
+        'works_for' => 'setWorksFor'
     ];
 
     /**
@@ -186,25 +162,19 @@ class Subscriber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'address' => 'getAddress',
-        'city' => 'getCity',
-        'country' => 'getCountry',
+        'billing_address' => 'getBillingAddress',
+        'company' => 'getCompany',
+        'create_date' => 'getCreateDate',
         'email' => 'getEmail',
-        'gsm_number' => 'getGsmNumber',
-        'identity_number' => 'getIdentityNumber',
-        'ip' => 'getIp',
-        'last_login_date' => 'getLastLoginDate',
+        'id' => 'getId',
+        'identification_no' => 'getIdentificationNo',
         'name' => 'getName',
-        'registration_date' => 'getRegistrationDate',
+        'phone_number' => 'getPhoneNumber',
         'secure_id' => 'getSecureId',
         'shipping_address' => 'getShippingAddress',
-        'shipping_city' => 'getShippingCity',
-        'shipping_country' => 'getShippingCountry',
-        'shipping_name' => 'getShippingName',
-        'shipping_zip_code' => 'getShippingZipCode',
         'surname' => 'getSurname',
-        'use_billing_address_for_shipping' => 'getUseBillingAddressForShipping',
-        'zip_code' => 'getZipCode'
+        'tax_number' => 'getTaxNumber',
+        'works_for' => 'getWorksFor'
     ];
 
     /**
@@ -267,25 +237,19 @@ class Subscriber implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
+        $this->container['billing_address'] = isset($data['billing_address']) ? $data['billing_address'] : null;
+        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
+        $this->container['create_date'] = isset($data['create_date']) ? $data['create_date'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['gsm_number'] = isset($data['gsm_number']) ? $data['gsm_number'] : null;
-        $this->container['identity_number'] = isset($data['identity_number']) ? $data['identity_number'] : null;
-        $this->container['ip'] = isset($data['ip']) ? $data['ip'] : null;
-        $this->container['last_login_date'] = isset($data['last_login_date']) ? $data['last_login_date'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['identification_no'] = isset($data['identification_no']) ? $data['identification_no'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['registration_date'] = isset($data['registration_date']) ? $data['registration_date'] : null;
+        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
         $this->container['secure_id'] = isset($data['secure_id']) ? $data['secure_id'] : null;
         $this->container['shipping_address'] = isset($data['shipping_address']) ? $data['shipping_address'] : null;
-        $this->container['shipping_city'] = isset($data['shipping_city']) ? $data['shipping_city'] : null;
-        $this->container['shipping_country'] = isset($data['shipping_country']) ? $data['shipping_country'] : null;
-        $this->container['shipping_name'] = isset($data['shipping_name']) ? $data['shipping_name'] : null;
-        $this->container['shipping_zip_code'] = isset($data['shipping_zip_code']) ? $data['shipping_zip_code'] : null;
         $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['use_billing_address_for_shipping'] = isset($data['use_billing_address_for_shipping']) ? $data['use_billing_address_for_shipping'] : null;
-        $this->container['zip_code'] = isset($data['zip_code']) ? $data['zip_code'] : null;
+        $this->container['tax_number'] = isset($data['tax_number']) ? $data['tax_number'] : null;
+        $this->container['works_for'] = isset($data['works_for']) ? $data['works_for'] : null;
     }
 
     /**
@@ -314,73 +278,73 @@ class Subscriber implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets address
+     * Gets billing_address
      *
-     * @return string
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\Address
      */
-    public function getAddress()
+    public function getBillingAddress()
     {
-        return $this->container['address'];
+        return $this->container['billing_address'];
     }
 
     /**
-     * Sets address
+     * Sets billing_address
      *
-     * @param string $address address
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\Address $billing_address billing_address
      *
      * @return $this
      */
-    public function setAddress($address)
+    public function setBillingAddress($billing_address)
     {
-        $this->container['address'] = $address;
+        $this->container['billing_address'] = $billing_address;
 
         return $this;
     }
 
     /**
-     * Gets city
+     * Gets company
      *
-     * @return string
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\Company
      */
-    public function getCity()
+    public function getCompany()
     {
-        return $this->container['city'];
+        return $this->container['company'];
     }
 
     /**
-     * Sets city
+     * Sets company
      *
-     * @param string $city city
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\Company $company company
      *
      * @return $this
      */
-    public function setCity($city)
+    public function setCompany($company)
     {
-        $this->container['city'] = $city;
+        $this->container['company'] = $company;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets create_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getCountry()
+    public function getCreateDate()
     {
-        return $this->container['country'];
+        return $this->container['create_date'];
     }
 
     /**
-     * Sets country
+     * Sets create_date
      *
-     * @param string $country country
+     * @param \DateTime $create_date create_date
      *
      * @return $this
      */
-    public function setCountry($country)
+    public function setCreateDate($create_date)
     {
-        $this->container['country'] = $country;
+        $this->container['create_date'] = $create_date;
 
         return $this;
     }
@@ -410,97 +374,49 @@ class Subscriber implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets gsm_number
+     * Gets id
      *
-     * @return string
+     * @return int
      */
-    public function getGsmNumber()
+    public function getId()
     {
-        return $this->container['gsm_number'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets gsm_number
+     * Sets id
      *
-     * @param string $gsm_number gsm_number
+     * @param int $id id
      *
      * @return $this
      */
-    public function setGsmNumber($gsm_number)
+    public function setId($id)
     {
-        $this->container['gsm_number'] = $gsm_number;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets identity_number
+     * Gets identification_no
      *
      * @return string
      */
-    public function getIdentityNumber()
+    public function getIdentificationNo()
     {
-        return $this->container['identity_number'];
+        return $this->container['identification_no'];
     }
 
     /**
-     * Sets identity_number
+     * Sets identification_no
      *
-     * @param string $identity_number identity_number
+     * @param string $identification_no identification_no
      *
      * @return $this
      */
-    public function setIdentityNumber($identity_number)
+    public function setIdentificationNo($identification_no)
     {
-        $this->container['identity_number'] = $identity_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets ip
-     *
-     * @return string
-     */
-    public function getIp()
-    {
-        return $this->container['ip'];
-    }
-
-    /**
-     * Sets ip
-     *
-     * @param string $ip ip
-     *
-     * @return $this
-     */
-    public function setIp($ip)
-    {
-        $this->container['ip'] = $ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_login_date
-     *
-     * @return string
-     */
-    public function getLastLoginDate()
-    {
-        return $this->container['last_login_date'];
-    }
-
-    /**
-     * Sets last_login_date
-     *
-     * @param string $last_login_date last_login_date
-     *
-     * @return $this
-     */
-    public function setLastLoginDate($last_login_date)
-    {
-        $this->container['last_login_date'] = $last_login_date;
+        $this->container['identification_no'] = $identification_no;
 
         return $this;
     }
@@ -530,25 +446,25 @@ class Subscriber implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets registration_date
+     * Gets phone_number
      *
      * @return string
      */
-    public function getRegistrationDate()
+    public function getPhoneNumber()
     {
-        return $this->container['registration_date'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets registration_date
+     * Sets phone_number
      *
-     * @param string $registration_date registration_date
+     * @param string $phone_number phone_number
      *
      * @return $this
      */
-    public function setRegistrationDate($registration_date)
+    public function setPhoneNumber($phone_number)
     {
-        $this->container['registration_date'] = $registration_date;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
@@ -580,7 +496,7 @@ class Subscriber implements ModelInterface, ArrayAccess
     /**
      * Gets shipping_address
      *
-     * @return string
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\Address
      */
     public function getShippingAddress()
     {
@@ -590,109 +506,13 @@ class Subscriber implements ModelInterface, ArrayAccess
     /**
      * Sets shipping_address
      *
-     * @param string $shipping_address shipping_address
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\Address $shipping_address shipping_address
      *
      * @return $this
      */
     public function setShippingAddress($shipping_address)
     {
         $this->container['shipping_address'] = $shipping_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_city
-     *
-     * @return string
-     */
-    public function getShippingCity()
-    {
-        return $this->container['shipping_city'];
-    }
-
-    /**
-     * Sets shipping_city
-     *
-     * @param string $shipping_city shipping_city
-     *
-     * @return $this
-     */
-    public function setShippingCity($shipping_city)
-    {
-        $this->container['shipping_city'] = $shipping_city;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_country
-     *
-     * @return string
-     */
-    public function getShippingCountry()
-    {
-        return $this->container['shipping_country'];
-    }
-
-    /**
-     * Sets shipping_country
-     *
-     * @param string $shipping_country shipping_country
-     *
-     * @return $this
-     */
-    public function setShippingCountry($shipping_country)
-    {
-        $this->container['shipping_country'] = $shipping_country;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_name
-     *
-     * @return string
-     */
-    public function getShippingName()
-    {
-        return $this->container['shipping_name'];
-    }
-
-    /**
-     * Sets shipping_name
-     *
-     * @param string $shipping_name shipping_name
-     *
-     * @return $this
-     */
-    public function setShippingName($shipping_name)
-    {
-        $this->container['shipping_name'] = $shipping_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_zip_code
-     *
-     * @return string
-     */
-    public function getShippingZipCode()
-    {
-        return $this->container['shipping_zip_code'];
-    }
-
-    /**
-     * Sets shipping_zip_code
-     *
-     * @param string $shipping_zip_code shipping_zip_code
-     *
-     * @return $this
-     */
-    public function setShippingZipCode($shipping_zip_code)
-    {
-        $this->container['shipping_zip_code'] = $shipping_zip_code;
 
         return $this;
     }
@@ -722,49 +542,49 @@ class Subscriber implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets use_billing_address_for_shipping
+     * Gets tax_number
      *
-     * @return bool
+     * @return string
      */
-    public function getUseBillingAddressForShipping()
+    public function getTaxNumber()
     {
-        return $this->container['use_billing_address_for_shipping'];
+        return $this->container['tax_number'];
     }
 
     /**
-     * Sets use_billing_address_for_shipping
+     * Sets tax_number
      *
-     * @param bool $use_billing_address_for_shipping use_billing_address_for_shipping
+     * @param string $tax_number tax_number
      *
      * @return $this
      */
-    public function setUseBillingAddressForShipping($use_billing_address_for_shipping)
+    public function setTaxNumber($tax_number)
     {
-        $this->container['use_billing_address_for_shipping'] = $use_billing_address_for_shipping;
+        $this->container['tax_number'] = $tax_number;
 
         return $this;
     }
 
     /**
-     * Gets zip_code
+     * Gets works_for
      *
      * @return string
      */
-    public function getZipCode()
+    public function getWorksFor()
     {
-        return $this->container['zip_code'];
+        return $this->container['works_for'];
     }
 
     /**
-     * Sets zip_code
+     * Sets works_for
      *
-     * @param string $zip_code zip_code
+     * @param string $works_for works_for
      *
      * @return $this
      */
-    public function setZipCode($zip_code)
+    public function setWorksFor($works_for)
     {
-        $this->container['zip_code'] = $zip_code;
+        $this->container['works_for'] = $works_for;
 
         return $this;
     }

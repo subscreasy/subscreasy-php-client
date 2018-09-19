@@ -61,9 +61,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         'callback_url' => 'string',
         'company' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Company',
         'id' => 'int',
+        'payment_gateway' => 'string',
         'payment_gateway_api_key' => 'string',
         'payment_gateway_security_key' => 'string',
-        'payment_method' => 'string',
+        'paytr_merchant_id' => 'int',
+        'payu_merchant_key_renewals' => 'string',
+        'payu_secret_key_renewals' => 'string',
+        'privacy_policy_url' => 'string',
         'secure_key' => 'string'
     ];
 
@@ -77,9 +81,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         'callback_url' => null,
         'company' => null,
         'id' => 'int64',
+        'payment_gateway' => null,
         'payment_gateway_api_key' => null,
         'payment_gateway_security_key' => null,
-        'payment_method' => null,
+        'paytr_merchant_id' => 'int32',
+        'payu_merchant_key_renewals' => null,
+        'payu_secret_key_renewals' => null,
+        'privacy_policy_url' => null,
         'secure_key' => null
     ];
 
@@ -114,9 +122,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         'callback_url' => 'callbackUrl',
         'company' => 'company',
         'id' => 'id',
+        'payment_gateway' => 'paymentGateway',
         'payment_gateway_api_key' => 'paymentGatewayApiKey',
         'payment_gateway_security_key' => 'paymentGatewaySecurityKey',
-        'payment_method' => 'paymentMethod',
+        'paytr_merchant_id' => 'paytrMerchantId',
+        'payu_merchant_key_renewals' => 'payuMerchantKeyRenewals',
+        'payu_secret_key_renewals' => 'payuSecretKeyRenewals',
+        'privacy_policy_url' => 'privacyPolicyUrl',
         'secure_key' => 'secureKey'
     ];
 
@@ -130,9 +142,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         'callback_url' => 'setCallbackUrl',
         'company' => 'setCompany',
         'id' => 'setId',
+        'payment_gateway' => 'setPaymentGateway',
         'payment_gateway_api_key' => 'setPaymentGatewayApiKey',
         'payment_gateway_security_key' => 'setPaymentGatewaySecurityKey',
-        'payment_method' => 'setPaymentMethod',
+        'paytr_merchant_id' => 'setPaytrMerchantId',
+        'payu_merchant_key_renewals' => 'setPayuMerchantKeyRenewals',
+        'payu_secret_key_renewals' => 'setPayuSecretKeyRenewals',
+        'privacy_policy_url' => 'setPrivacyPolicyUrl',
         'secure_key' => 'setSecureKey'
     ];
 
@@ -146,9 +162,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         'callback_url' => 'getCallbackUrl',
         'company' => 'getCompany',
         'id' => 'getId',
+        'payment_gateway' => 'getPaymentGateway',
         'payment_gateway_api_key' => 'getPaymentGatewayApiKey',
         'payment_gateway_security_key' => 'getPaymentGatewaySecurityKey',
-        'payment_method' => 'getPaymentMethod',
+        'paytr_merchant_id' => 'getPaytrMerchantId',
+        'payu_merchant_key_renewals' => 'getPayuMerchantKeyRenewals',
+        'payu_secret_key_renewals' => 'getPayuSecretKeyRenewals',
+        'privacy_policy_url' => 'getPrivacyPolicyUrl',
         'secure_key' => 'getSecureKey'
     ];
 
@@ -193,9 +213,10 @@ class CompanyProps implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const PAYMENT_METHOD_OFFLINE = 'OFFLINE';
-    const PAYMENT_METHOD_IYZICO = 'IYZICO';
-    const PAYMENT_METHOD_PAYU = 'PAYU';
+    const PAYMENT_GATEWAY_OFFLINE = 'OFFLINE';
+    const PAYMENT_GATEWAY_IYZICO = 'IYZICO';
+    const PAYMENT_GATEWAY_PAYU = 'PAYU';
+    const PAYMENT_GATEWAY_PAYTR = 'PAYTR';
     
 
     
@@ -204,12 +225,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
-    public function getPaymentMethodAllowableValues()
+    public function getPaymentGatewayAllowableValues()
     {
         return [
-            self::PAYMENT_METHOD_OFFLINE,
-            self::PAYMENT_METHOD_IYZICO,
-            self::PAYMENT_METHOD_PAYU,
+            self::PAYMENT_GATEWAY_OFFLINE,
+            self::PAYMENT_GATEWAY_IYZICO,
+            self::PAYMENT_GATEWAY_PAYU,
+            self::PAYMENT_GATEWAY_PAYTR,
         ];
     }
     
@@ -233,9 +255,13 @@ class CompanyProps implements ModelInterface, ArrayAccess
         $this->container['callback_url'] = isset($data['callback_url']) ? $data['callback_url'] : null;
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['payment_gateway'] = isset($data['payment_gateway']) ? $data['payment_gateway'] : null;
         $this->container['payment_gateway_api_key'] = isset($data['payment_gateway_api_key']) ? $data['payment_gateway_api_key'] : null;
         $this->container['payment_gateway_security_key'] = isset($data['payment_gateway_security_key']) ? $data['payment_gateway_security_key'] : null;
-        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
+        $this->container['paytr_merchant_id'] = isset($data['paytr_merchant_id']) ? $data['paytr_merchant_id'] : null;
+        $this->container['payu_merchant_key_renewals'] = isset($data['payu_merchant_key_renewals']) ? $data['payu_merchant_key_renewals'] : null;
+        $this->container['payu_secret_key_renewals'] = isset($data['payu_secret_key_renewals']) ? $data['payu_secret_key_renewals'] : null;
+        $this->container['privacy_policy_url'] = isset($data['privacy_policy_url']) ? $data['privacy_policy_url'] : null;
         $this->container['secure_key'] = isset($data['secure_key']) ? $data['secure_key'] : null;
     }
 
@@ -248,10 +274,10 @@ class CompanyProps implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!in_array($this->container['payment_method'], $allowedValues)) {
+        $allowedValues = $this->getPaymentGatewayAllowableValues();
+        if (!in_array($this->container['payment_gateway'], $allowedValues)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'payment_method', must be one of '%s'",
+                "invalid value for 'payment_gateway', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -268,8 +294,8 @@ class CompanyProps implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!in_array($this->container['payment_method'], $allowedValues)) {
+        $allowedValues = $this->getPaymentGatewayAllowableValues();
+        if (!in_array($this->container['payment_gateway'], $allowedValues)) {
             return false;
         }
         return true;
@@ -373,6 +399,39 @@ class CompanyProps implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets payment_gateway
+     *
+     * @return string
+     */
+    public function getPaymentGateway()
+    {
+        return $this->container['payment_gateway'];
+    }
+
+    /**
+     * Sets payment_gateway
+     *
+     * @param string $payment_gateway payment_gateway
+     *
+     * @return $this
+     */
+    public function setPaymentGateway($payment_gateway)
+    {
+        $allowedValues = $this->getPaymentGatewayAllowableValues();
+        if (!is_null($payment_gateway) && !in_array($payment_gateway, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'payment_gateway', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_gateway'] = $payment_gateway;
+
+        return $this;
+    }
+
+    /**
      * Gets payment_gateway_api_key
      *
      * @return string
@@ -421,34 +480,97 @@ class CompanyProps implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payment_method
+     * Gets paytr_merchant_id
      *
-     * @return string
+     * @return int
      */
-    public function getPaymentMethod()
+    public function getPaytrMerchantId()
     {
-        return $this->container['payment_method'];
+        return $this->container['paytr_merchant_id'];
     }
 
     /**
-     * Sets payment_method
+     * Sets paytr_merchant_id
      *
-     * @param string $payment_method payment_method
+     * @param int $paytr_merchant_id paytr_merchant_id
      *
      * @return $this
      */
-    public function setPaymentMethod($payment_method)
+    public function setPaytrMerchantId($paytr_merchant_id)
     {
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'payment_method', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['payment_method'] = $payment_method;
+        $this->container['paytr_merchant_id'] = $paytr_merchant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payu_merchant_key_renewals
+     *
+     * @return string
+     */
+    public function getPayuMerchantKeyRenewals()
+    {
+        return $this->container['payu_merchant_key_renewals'];
+    }
+
+    /**
+     * Sets payu_merchant_key_renewals
+     *
+     * @param string $payu_merchant_key_renewals payu_merchant_key_renewals
+     *
+     * @return $this
+     */
+    public function setPayuMerchantKeyRenewals($payu_merchant_key_renewals)
+    {
+        $this->container['payu_merchant_key_renewals'] = $payu_merchant_key_renewals;
+
+        return $this;
+    }
+
+    /**
+     * Gets payu_secret_key_renewals
+     *
+     * @return string
+     */
+    public function getPayuSecretKeyRenewals()
+    {
+        return $this->container['payu_secret_key_renewals'];
+    }
+
+    /**
+     * Sets payu_secret_key_renewals
+     *
+     * @param string $payu_secret_key_renewals payu_secret_key_renewals
+     *
+     * @return $this
+     */
+    public function setPayuSecretKeyRenewals($payu_secret_key_renewals)
+    {
+        $this->container['payu_secret_key_renewals'] = $payu_secret_key_renewals;
+
+        return $this;
+    }
+
+    /**
+     * Gets privacy_policy_url
+     *
+     * @return string
+     */
+    public function getPrivacyPolicyUrl()
+    {
+        return $this->container['privacy_policy_url'];
+    }
+
+    /**
+     * Sets privacy_policy_url
+     *
+     * @param string $privacy_policy_url privacy_policy_url
+     *
+     * @return $this
+     */
+    public function setPrivacyPolicyUrl($privacy_policy_url)
+    {
+        $this->container['privacy_policy_url'] = $privacy_policy_url;
 
         return $this;
     }

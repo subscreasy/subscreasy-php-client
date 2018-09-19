@@ -59,7 +59,8 @@ class Company implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'address' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Address',
         'id' => 'int',
-        'name' => 'string'
+        'name' => 'string',
+        'site_name' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class Company implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'address' => null,
         'id' => 'int64',
-        'name' => null
+        'name' => null,
+        'site_name' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class Company implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'address' => 'address',
         'id' => 'id',
-        'name' => 'name'
+        'name' => 'name',
+        'site_name' => 'siteName'
     ];
 
     /**
@@ -113,7 +116,8 @@ class Company implements ModelInterface, ArrayAccess
     protected static $setters = [
         'address' => 'setAddress',
         'id' => 'setId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'site_name' => 'setSiteName'
     ];
 
     /**
@@ -124,7 +128,8 @@ class Company implements ModelInterface, ArrayAccess
     protected static $getters = [
         'address' => 'getAddress',
         'id' => 'getId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'site_name' => 'getSiteName'
     ];
 
     /**
@@ -190,6 +195,7 @@ class Company implements ModelInterface, ArrayAccess
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['site_name'] = isset($data['site_name']) ? $data['site_name'] : null;
     }
 
     /**
@@ -291,6 +297,30 @@ class Company implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets site_name
+     *
+     * @return string
+     */
+    public function getSiteName()
+    {
+        return $this->container['site_name'];
+    }
+
+    /**
+     * Sets site_name
+     *
+     * @param string $site_name site_name
+     *
+     * @return $this
+     */
+    public function setSiteName($site_name)
+    {
+        $this->container['site_name'] = $site_name;
 
         return $this;
     }

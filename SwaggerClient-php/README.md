@@ -62,7 +62,7 @@ $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Au
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new Swagger\Client\Api\AnalyticsResourceApi(
+$apiInstance = new Swagger\Client\Api\AccountResourceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -70,10 +70,10 @@ $apiInstance = new Swagger\Client\Api\AnalyticsResourceApi(
 );
 
 try {
-    $result = $apiInstance->getDashboardAnalyticsUsingGET();
+    $result = $apiInstance->isAuthenticatedUsingGET();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsResourceApi->getDashboardAnalyticsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountResourceApi->isAuthenticatedUsingGET: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -85,16 +85,20 @@ All URIs are relative to *https://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountResourceApi* | [**isAuthenticatedUsingGET**](docs/Api/AccountResourceApi.md#isauthenticatedusingget) | **GET** /api/authenticate | isAuthenticated
+*AccountResourceApi* | [**registerAccountUsingPOST**](docs/Api/AccountResourceApi.md#registeraccountusingpost) | **POST** /api/register | registerAccount
 *AnalyticsResourceApi* | [**getDashboardAnalyticsUsingGET**](docs/Api/AnalyticsResourceApi.md#getdashboardanalyticsusingget) | **GET** /api/analytics/dashboard | getDashboardAnalytics
-*CardResourceApi* | [**createCardUsingPOST**](docs/Api/CardResourceApi.md#createcardusingpost) | **POST** /api/cards | createCard
-*CardResourceApi* | [**deleteCardUsingDELETE**](docs/Api/CardResourceApi.md#deletecardusingdelete) | **DELETE** /api/cards/{id} | deleteCard
-*CardResourceApi* | [**getAllCardsUsingGET**](docs/Api/CardResourceApi.md#getallcardsusingget) | **GET** /api/cards | getAllCards
-*CardResourceApi* | [**getCardUsingGET**](docs/Api/CardResourceApi.md#getcardusingget) | **GET** /api/cards/{id} | getCard
-*CardResourceApi* | [**updateCardUsingPUT**](docs/Api/CardResourceApi.md#updatecardusingput) | **PUT** /api/cards | updateCard
+*BankAccountResourceApi* | [**createBankAccountUsingPOST**](docs/Api/BankAccountResourceApi.md#createbankaccountusingpost) | **POST** /api/bank-accounts | createBankAccount
+*BankAccountResourceApi* | [**deleteBankAccountUsingDELETE**](docs/Api/BankAccountResourceApi.md#deletebankaccountusingdelete) | **DELETE** /api/bank-accounts/{id} | deleteBankAccount
+*BankAccountResourceApi* | [**getAllBankAccountsUsingGET**](docs/Api/BankAccountResourceApi.md#getallbankaccountsusingget) | **GET** /api/bank-accounts | getAllBankAccounts
+*BankAccountResourceApi* | [**getBankAccountUsingGET**](docs/Api/BankAccountResourceApi.md#getbankaccountusingget) | **GET** /api/bank-accounts/{id} | getBankAccount
+*BankAccountResourceApi* | [**updateBankAccountUsingPUT**](docs/Api/BankAccountResourceApi.md#updatebankaccountusingput) | **PUT** /api/bank-accounts | updateBankAccount
+*CardResourceApi* | [**saveCardUsingPOST**](docs/Api/CardResourceApi.md#savecardusingpost) | **POST** /api/card | saveCard
 *ChargingLogResourceApi* | [**createChargingLogUsingPOST**](docs/Api/ChargingLogResourceApi.md#createcharginglogusingpost) | **POST** /api/charging-logs | createChargingLog
 *ChargingLogResourceApi* | [**deleteChargingLogUsingDELETE**](docs/Api/ChargingLogResourceApi.md#deletecharginglogusingdelete) | **DELETE** /api/charging-logs/{id} | deleteChargingLog
 *ChargingLogResourceApi* | [**getAllChargingLogsUsingGET**](docs/Api/ChargingLogResourceApi.md#getallcharginglogsusingget) | **GET** /api/charging-logs | getAllChargingLogs
 *ChargingLogResourceApi* | [**getChargingLogUsingGET**](docs/Api/ChargingLogResourceApi.md#getcharginglogusingget) | **GET** /api/charging-logs/{id} | getChargingLog
+*ChargingLogResourceApi* | [**getUnpaidChargingLogsUsingGET**](docs/Api/ChargingLogResourceApi.md#getunpaidcharginglogsusingget) | **GET** /api/charging-logs/unpaid | getUnpaidChargingLogs
 *ChargingLogResourceApi* | [**refundUsingPOST**](docs/Api/ChargingLogResourceApi.md#refundusingpost) | **POST** /api/charging-logs/refund/{chargingLogId} | refund
 *ChargingLogResourceApi* | [**updateChargingLogUsingPUT**](docs/Api/ChargingLogResourceApi.md#updatecharginglogusingput) | **PUT** /api/charging-logs | updateChargingLog
 *CompanyPropsResourceApi* | [**createCompanyPropsUsingPOST**](docs/Api/CompanyPropsResourceApi.md#createcompanypropsusingpost) | **POST** /api/company-props | createCompanyProps
@@ -144,6 +148,11 @@ Class | Method | HTTP request | Description
 *OfferResourceApi* | [**getOfferUsingGET**](docs/Api/OfferResourceApi.md#getofferusingget) | **GET** /api/offers/{id} | getOffer
 *OfferResourceApi* | [**updateOfferUsingPUT**](docs/Api/OfferResourceApi.md#updateofferusingput) | **PUT** /api/offers | updateOffer
 *ProfileInfoResourceApi* | [**getActiveProfilesUsingGET**](docs/Api/ProfileInfoResourceApi.md#getactiveprofilesusingget) | **GET** /api/profile-info | getActiveProfiles
+*SavedCardResourceApi* | [**createCardUsingPOST**](docs/Api/SavedCardResourceApi.md#createcardusingpost) | **POST** /api/saved-cards | createCard
+*SavedCardResourceApi* | [**deleteCardUsingDELETE**](docs/Api/SavedCardResourceApi.md#deletecardusingdelete) | **DELETE** /api/saved-cards/{id} | deleteCard
+*SavedCardResourceApi* | [**getAllCardsUsingGET**](docs/Api/SavedCardResourceApi.md#getallcardsusingget) | **GET** /api/saved-cards | getAllCards
+*SavedCardResourceApi* | [**getCardUsingGET**](docs/Api/SavedCardResourceApi.md#getcardusingget) | **GET** /api/saved-cards/{id} | getCard
+*SavedCardResourceApi* | [**updateCardUsingPUT**](docs/Api/SavedCardResourceApi.md#updatecardusingput) | **PUT** /api/saved-cards | updateCard
 *ServiceInstanceResourceApi* | [**createServiceInstanceUsingPOST**](docs/Api/ServiceInstanceResourceApi.md#createserviceinstanceusingpost) | **POST** /api/service-instances | createServiceInstance
 *ServiceInstanceResourceApi* | [**deleteServiceInstanceUsingDELETE**](docs/Api/ServiceInstanceResourceApi.md#deleteserviceinstanceusingdelete) | **DELETE** /api/service-instances/{id} | deleteServiceInstance
 *ServiceInstanceResourceApi* | [**getAllServiceInstancesUsingGET**](docs/Api/ServiceInstanceResourceApi.md#getallserviceinstancesusingget) | **GET** /api/service-instances | getAllServiceInstances
@@ -164,24 +173,42 @@ Class | Method | HTTP request | Description
 *SubscriberResourceApi* | [**getAllSubscribersUsingGET**](docs/Api/SubscriberResourceApi.md#getallsubscribersusingget) | **GET** /api/subscribers | getAllSubscribers
 *SubscriberResourceApi* | [**getSubscriberByEmailUsingGET**](docs/Api/SubscriberResourceApi.md#getsubscriberbyemailusingget) | **GET** /api/subscribers/email/{email} | getSubscriberByEmail
 *SubscriberResourceApi* | [**getSubscriberByNameUsingGET**](docs/Api/SubscriberResourceApi.md#getsubscriberbynameusingget) | **GET** /api/subscribers/name/{name} | getSubscriberByName
+*SubscriberResourceApi* | [**getSubscriberBySecureIdUsingGET**](docs/Api/SubscriberResourceApi.md#getsubscriberbysecureidusingget) | **GET** /api/subscribers/secureId/{secureId} | getSubscriberBySecureId
 *SubscriberResourceApi* | [**getSubscriberUsingGET**](docs/Api/SubscriberResourceApi.md#getsubscriberusingget) | **GET** /api/subscribers/{id} | getSubscriber
 *SubscriberResourceApi* | [**updateSubscriberUsingPUT**](docs/Api/SubscriberResourceApi.md#updatesubscriberusingput) | **PUT** /api/subscribers | updateSubscriber
-*SubsriptionResourceApi* | [**cancelSubscriptionUsingPUT**](docs/Api/SubsriptionResourceApi.md#cancelsubscriptionusingput) | **PUT** /api/subscriptions/cancel | cancelSubscription
-*SubsriptionResourceApi* | [**getActiveSubscriptionsUsingGET**](docs/Api/SubsriptionResourceApi.md#getactivesubscriptionsusingget) | **GET** /api/subsriptions/subscriber/{secureId} | getActiveSubscriptions
-*SubsriptionResourceApi* | [**getAllCompanySubscriptionsUsingGET**](docs/Api/SubsriptionResourceApi.md#getallcompanysubscriptionsusingget) | **GET** /api/subscriptions/company/{id} | getAllCompanySubscriptions
-*SubsriptionResourceApi* | [**getSubsriptionUsingGET**](docs/Api/SubsriptionResourceApi.md#getsubsriptionusingget) | **GET** /api/subsriptions/{id} | getSubsription
-*SubsriptionResourceApi* | [**startSubscriptionUsingPOST**](docs/Api/SubsriptionResourceApi.md#startsubscriptionusingpost) | **POST** /api/subscriptions/start | startSubscription
+*SubscriptionResourceApi* | [**cancelSubscriptionUsingPUT**](docs/Api/SubscriptionResourceApi.md#cancelsubscriptionusingput) | **PUT** /api/subscriptions/cancel | cancelSubscription
+*SubscriptionResourceApi* | [**getActiveSubscriptionsByEmailUsingGET**](docs/Api/SubscriptionResourceApi.md#getactivesubscriptionsbyemailusingget) | **GET** /api/subscriptions/subscriber/email/{email} | getActiveSubscriptionsByEmail
+*SubscriptionResourceApi* | [**getActiveSubscriptionsUsingGET**](docs/Api/SubscriptionResourceApi.md#getactivesubscriptionsusingget) | **GET** /api/subscriptions/subscriber/{secureId} | getActiveSubscriptions
+*SubscriptionResourceApi* | [**getAllCompanySubscriptionsUsingGET**](docs/Api/SubscriptionResourceApi.md#getallcompanysubscriptionsusingget) | **GET** /api/subscriptions/company/{id} | getAllCompanySubscriptions
+*SubscriptionResourceApi* | [**getSubscriptionUsingGET**](docs/Api/SubscriptionResourceApi.md#getsubscriptionusingget) | **GET** /api/subscriptions/{id} | getSubscription
+*SubscriptionResourceApi* | [**startSubscriptionUsingPOST**](docs/Api/SubscriptionResourceApi.md#startsubscriptionusingpost) | **POST** /api/subscriptions/start | startSubscription
 *UsageNotificationResourceApi* | [**createUsageNotificationUsingPOST**](docs/Api/UsageNotificationResourceApi.md#createusagenotificationusingpost) | **POST** /api/usage-notifications | createUsageNotification
 *UsageNotificationResourceApi* | [**deleteUsageNotificationUsingDELETE**](docs/Api/UsageNotificationResourceApi.md#deleteusagenotificationusingdelete) | **DELETE** /api/usage-notifications/{id} | deleteUsageNotification
 *UsageNotificationResourceApi* | [**getAllUsageNotificationsUsingGET**](docs/Api/UsageNotificationResourceApi.md#getallusagenotificationsusingget) | **GET** /api/usage-notifications | getAllUsageNotifications
 *UsageNotificationResourceApi* | [**getUsageNotificationUsingGET**](docs/Api/UsageNotificationResourceApi.md#getusagenotificationusingget) | **GET** /api/usage-notifications/{id} | getUsageNotification
 *UsageNotificationResourceApi* | [**updateUsageNotificationUsingPUT**](docs/Api/UsageNotificationResourceApi.md#updateusagenotificationusingput) | **PUT** /api/usage-notifications | updateUsageNotification
+*UserJwtControllerApi* | [**authorizeUsingPOST**](docs/Api/UserJwtControllerApi.md#authorizeusingpost) | **POST** /api/authenticate | authorize
+*UserResourceApi* | [**createCompanyUserUsingPOST**](docs/Api/UserResourceApi.md#createcompanyuserusingpost) | **POST** /api/users/company | createCompanyUser
 *UserResourceApi* | [**createUserUsingPOST**](docs/Api/UserResourceApi.md#createuserusingpost) | **POST** /api/users | createUser
 *UserResourceApi* | [**deleteUserUsingDELETE**](docs/Api/UserResourceApi.md#deleteuserusingdelete) | **DELETE** /api/users/{login} | deleteUser
+*UserResourceApi* | [**getAllUsersByAuthenticatedCompanyUsingGET**](docs/Api/UserResourceApi.md#getallusersbyauthenticatedcompanyusingget) | **GET** /api/users/company | getAllUsersByAuthenticatedCompany
+*UserResourceApi* | [**getAllUsersByCompanyIdUsingGET**](docs/Api/UserResourceApi.md#getallusersbycompanyidusingget) | **GET** /api/users/company/{companyId} | getAllUsersByCompanyId
 *UserResourceApi* | [**getAllUsersUsingGET**](docs/Api/UserResourceApi.md#getallusersusingget) | **GET** /api/users | getAllUsers
 *UserResourceApi* | [**getAuthoritiesUsingGET**](docs/Api/UserResourceApi.md#getauthoritiesusingget) | **GET** /api/users/authorities | getAuthorities
 *UserResourceApi* | [**getUserUsingGET**](docs/Api/UserResourceApi.md#getuserusingget) | **GET** /api/users/{login} | getUser
 *UserResourceApi* | [**updateUserUsingPUT**](docs/Api/UserResourceApi.md#updateuserusingput) | **PUT** /api/users | updateUser
+*WebHookResourceApi* | [**createWebHookUsingPOST**](docs/Api/WebHookResourceApi.md#createwebhookusingpost) | **POST** /api/web-hooks | createWebHook
+*WebHookResourceApi* | [**deleteWebHookUsingDELETE**](docs/Api/WebHookResourceApi.md#deletewebhookusingdelete) | **DELETE** /api/web-hooks/{id} | deleteWebHook
+*WebHookResourceApi* | [**getAllWebHooksUsingGET**](docs/Api/WebHookResourceApi.md#getallwebhooksusingget) | **GET** /api/web-hooks | getAllWebHooks
+*WebHookResourceApi* | [**getWebHookUsingGET**](docs/Api/WebHookResourceApi.md#getwebhookusingget) | **GET** /api/web-hooks/{id} | getWebHook
+*WebHookResourceApi* | [**updateWebHookUsingPUT**](docs/Api/WebHookResourceApi.md#updatewebhookusingput) | **PUT** /api/web-hooks | updateWebHook
+*WebHookServerApi* | [**paymentUpdatedUsingPOST**](docs/Api/WebHookServerApi.md#paymentupdatedusingpost) | **POST** /subscreasy/webhook/payment-updated | paymentUpdated
+*WebHookServerApi* | [**subscriberCreatedUsingPOST**](docs/Api/WebHookServerApi.md#subscribercreatedusingpost) | **POST** /subscreasy/webhook/subscriber-created | subscriberCreated
+*WebHookServerApi* | [**subscriberUpdatedUsingPOST**](docs/Api/WebHookServerApi.md#subscriberupdatedusingpost) | **POST** /subscreasy/webhook/subscriber-updated | subscriberUpdated
+*WebHookServerApi* | [**subscriptionEndedUsingPOST**](docs/Api/WebHookServerApi.md#subscriptionendedusingpost) | **POST** /subscreasy/webhook/subscription-ended | subscriptionEnded
+*WebHookServerApi* | [**subscriptionRenewalFailedUsingPOST**](docs/Api/WebHookServerApi.md#subscriptionrenewalfailedusingpost) | **POST** /subscreasy/webhook/subscription-renewal-failed | subscriptionRenewalFailed
+*WebHookServerApi* | [**subscriptionRenewedUsingPOST**](docs/Api/WebHookServerApi.md#subscriptionrenewedusingpost) | **POST** /subscreasy/webhook/subscription-renewed | subscriptionRenewed
+*WebHookServerApi* | [**subscriptionStartedUsingPOST**](docs/Api/WebHookServerApi.md#subscriptionstartedusingpost) | **POST** /subscreasy/webhook/subscription-started | subscriptionStarted
 
 
 ## Documentation For Models
@@ -190,6 +217,7 @@ Class | Method | HTTP request | Description
  - [Authority](docs/Model/Authority.md)
  - [Authorization](docs/Model/Authorization.md)
  - [AuthorizedServicesResponse](docs/Model/AuthorizedServicesResponse.md)
+ - [BankAccount](docs/Model/BankAccount.md)
  - [Cancellation](docs/Model/Cancellation.md)
  - [ChargingLog](docs/Model/ChargingLog.md)
  - [Company](docs/Model/Company.md)
@@ -200,6 +228,7 @@ Class | Method | HTTP request | Description
  - [History](docs/Model/History.md)
  - [Invoice](docs/Model/Invoice.md)
  - [InvoiceRequest](docs/Model/InvoiceRequest.md)
+ - [LoginVM](docs/Model/LoginVM.md)
  - [ManagedUserVM](docs/Model/ManagedUserVM.md)
  - [MessageTemplate](docs/Model/MessageTemplate.md)
  - [Offer](docs/Model/Offer.md)
@@ -207,6 +236,7 @@ Class | Method | HTTP request | Description
  - [ProfileInfoVM](docs/Model/ProfileInfoVM.md)
  - [RecurrencePeriod](docs/Model/RecurrencePeriod.md)
  - [ResponseEntity](docs/Model/ResponseEntity.md)
+ - [SaveCardRequest](docs/Model/SaveCardRequest.md)
  - [SavedCard](docs/Model/SavedCard.md)
  - [Service](docs/Model/Service.md)
  - [ServiceInstance](docs/Model/ServiceInstance.md)
@@ -214,12 +244,14 @@ Class | Method | HTTP request | Description
  - [ServiceOffering](docs/Model/ServiceOffering.md)
  - [ServiceOfferingResult](docs/Model/ServiceOfferingResult.md)
  - [StartSubscriptionRequest](docs/Model/StartSubscriptionRequest.md)
+ - [StartSubscriptionResult](docs/Model/StartSubscriptionResult.md)
  - [Subscriber](docs/Model/Subscriber.md)
- - [SubscriptionCreateResult](docs/Model/SubscriptionCreateResult.md)
- - [SubscriptionPlan](docs/Model/SubscriptionPlan.md)
  - [Subsription](docs/Model/Subsription.md)
  - [UsageNotification](docs/Model/UsageNotification.md)
  - [User](docs/Model/User.md)
+ - [UserDTO](docs/Model/UserDTO.md)
+ - [WebHook](docs/Model/WebHook.md)
+ - [WebHookRequest](docs/Model/WebHookRequest.md)
 
 
 ## Documentation For Authorization

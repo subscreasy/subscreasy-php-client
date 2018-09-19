@@ -1154,7 +1154,7 @@ class SubsriptionResourceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult
      */
     public function startSubscriptionUsingPOST($request)
     {
@@ -1171,11 +1171,11 @@ class SubsriptionResourceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function startSubscriptionUsingPOSTWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult';
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult';
         $request = $this->startSubscriptionUsingPOSTRequest($request);
 
         try {
@@ -1227,7 +1227,7 @@ class SubsriptionResourceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult',
+                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1269,7 +1269,7 @@ class SubsriptionResourceApi
      */
     public function startSubscriptionUsingPOSTAsyncWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult';
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult';
         $request = $this->startSubscriptionUsingPOSTRequest($request);
 
         return $this->client

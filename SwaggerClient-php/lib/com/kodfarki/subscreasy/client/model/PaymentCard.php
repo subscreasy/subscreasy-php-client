@@ -59,6 +59,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'card_alias' => 'string',
         'card_expiry' => 'string',
+        'card_family' => 'string',
         'card_holder_name' => 'string',
         'card_number' => 'string',
         'card_token' => 'string',
@@ -77,6 +78,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'card_alias' => null,
         'card_expiry' => null,
+        'card_family' => null,
         'card_holder_name' => null,
         'card_number' => null,
         'card_token' => null,
@@ -116,6 +118,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'card_alias' => 'cardAlias',
         'card_expiry' => 'cardExpiry',
+        'card_family' => 'cardFamily',
         'card_holder_name' => 'cardHolderName',
         'card_number' => 'cardNumber',
         'card_token' => 'cardToken',
@@ -134,6 +137,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     protected static $setters = [
         'card_alias' => 'setCardAlias',
         'card_expiry' => 'setCardExpiry',
+        'card_family' => 'setCardFamily',
         'card_holder_name' => 'setCardHolderName',
         'card_number' => 'setCardNumber',
         'card_token' => 'setCardToken',
@@ -152,6 +156,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     protected static $getters = [
         'card_alias' => 'getCardAlias',
         'card_expiry' => 'getCardExpiry',
+        'card_family' => 'getCardFamily',
         'card_holder_name' => 'getCardHolderName',
         'card_number' => 'getCardNumber',
         'card_token' => 'getCardToken',
@@ -224,6 +229,7 @@ class PaymentCard implements ModelInterface, ArrayAccess
     {
         $this->container['card_alias'] = isset($data['card_alias']) ? $data['card_alias'] : null;
         $this->container['card_expiry'] = isset($data['card_expiry']) ? $data['card_expiry'] : null;
+        $this->container['card_family'] = isset($data['card_family']) ? $data['card_family'] : null;
         $this->container['card_holder_name'] = isset($data['card_holder_name']) ? $data['card_holder_name'] : null;
         $this->container['card_number'] = isset($data['card_number']) ? $data['card_number'] : null;
         $this->container['card_token'] = isset($data['card_token']) ? $data['card_token'] : null;
@@ -303,6 +309,30 @@ class PaymentCard implements ModelInterface, ArrayAccess
     public function setCardExpiry($card_expiry)
     {
         $this->container['card_expiry'] = $card_expiry;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_family
+     *
+     * @return string
+     */
+    public function getCardFamily()
+    {
+        return $this->container['card_family'];
+    }
+
+    /**
+     * Sets card_family
+     *
+     * @param string $card_family card_family
+     *
+     * @return $this
+     */
+    public function setCardFamily($card_family)
+    {
+        $this->container['card_family'] = $card_family;
 
         return $this;
     }

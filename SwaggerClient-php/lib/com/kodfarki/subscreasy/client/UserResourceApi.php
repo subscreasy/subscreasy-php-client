@@ -83,6 +83,268 @@ class UserResourceApi
     }
 
     /**
+     * Operation createCompanyUserUsingPOST
+     *
+     * createCompanyUser
+     *
+     * @param  \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM $managed_user_vm managedUserVM (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity
+     */
+    public function createCompanyUserUsingPOST($managed_user_vm)
+    {
+        list($response) = $this->createCompanyUserUsingPOSTWithHttpInfo($managed_user_vm);
+        return $response;
+    }
+
+    /**
+     * Operation createCompanyUserUsingPOSTWithHttpInfo
+     *
+     * createCompanyUser
+     *
+     * @param  \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM $managed_user_vm managedUserVM (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createCompanyUserUsingPOSTWithHttpInfo($managed_user_vm)
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity';
+        $request = $this->createCompanyUserUsingPOSTRequest($managed_user_vm);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createCompanyUserUsingPOSTAsync
+     *
+     * createCompanyUser
+     *
+     * @param  \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM $managed_user_vm managedUserVM (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCompanyUserUsingPOSTAsync($managed_user_vm)
+    {
+        return $this->createCompanyUserUsingPOSTAsyncWithHttpInfo($managed_user_vm)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createCompanyUserUsingPOSTAsyncWithHttpInfo
+     *
+     * createCompanyUser
+     *
+     * @param  \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM $managed_user_vm managedUserVM (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCompanyUserUsingPOSTAsyncWithHttpInfo($managed_user_vm)
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity';
+        $request = $this->createCompanyUserUsingPOSTRequest($managed_user_vm);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createCompanyUserUsingPOST'
+     *
+     * @param  \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM $managed_user_vm managedUserVM (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createCompanyUserUsingPOSTRequest($managed_user_vm)
+    {
+        // verify the required parameter 'managed_user_vm' is set
+        if ($managed_user_vm === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $managed_user_vm when calling createCompanyUserUsingPOST'
+            );
+        }
+
+        $resourcePath = '/api/users/company';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($managed_user_vm)) {
+            $_tempBody = $managed_user_vm;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createUserUsingPOST
      *
      * createUser
@@ -568,6 +830,521 @@ class UserResourceApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAllUsersByAuthenticatedCompanyUsingGET
+     *
+     * getAllUsersByAuthenticatedCompany
+     *
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\User[]
+     */
+    public function getAllUsersByAuthenticatedCompanyUsingGET()
+    {
+        list($response) = $this->getAllUsersByAuthenticatedCompanyUsingGETWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getAllUsersByAuthenticatedCompanyUsingGETWithHttpInfo
+     *
+     * getAllUsersByAuthenticatedCompany
+     *
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\User[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAllUsersByAuthenticatedCompanyUsingGETWithHttpInfo()
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]';
+        $request = $this->getAllUsersByAuthenticatedCompanyUsingGETRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAllUsersByAuthenticatedCompanyUsingGETAsync
+     *
+     * getAllUsersByAuthenticatedCompany
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllUsersByAuthenticatedCompanyUsingGETAsync()
+    {
+        return $this->getAllUsersByAuthenticatedCompanyUsingGETAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAllUsersByAuthenticatedCompanyUsingGETAsyncWithHttpInfo
+     *
+     * getAllUsersByAuthenticatedCompany
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllUsersByAuthenticatedCompanyUsingGETAsyncWithHttpInfo()
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]';
+        $request = $this->getAllUsersByAuthenticatedCompanyUsingGETRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAllUsersByAuthenticatedCompanyUsingGET'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAllUsersByAuthenticatedCompanyUsingGETRequest()
+    {
+
+        $resourcePath = '/api/users/company';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAllUsersByCompanyIdUsingGET
+     *
+     * getAllUsersByCompanyId
+     *
+     * @param  int $company_id companyId (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\User[]
+     */
+    public function getAllUsersByCompanyIdUsingGET($company_id)
+    {
+        list($response) = $this->getAllUsersByCompanyIdUsingGETWithHttpInfo($company_id);
+        return $response;
+    }
+
+    /**
+     * Operation getAllUsersByCompanyIdUsingGETWithHttpInfo
+     *
+     * getAllUsersByCompanyId
+     *
+     * @param  int $company_id companyId (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\User[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAllUsersByCompanyIdUsingGETWithHttpInfo($company_id)
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]';
+        $request = $this->getAllUsersByCompanyIdUsingGETRequest($company_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAllUsersByCompanyIdUsingGETAsync
+     *
+     * getAllUsersByCompanyId
+     *
+     * @param  int $company_id companyId (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllUsersByCompanyIdUsingGETAsync($company_id)
+    {
+        return $this->getAllUsersByCompanyIdUsingGETAsyncWithHttpInfo($company_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAllUsersByCompanyIdUsingGETAsyncWithHttpInfo
+     *
+     * getAllUsersByCompanyId
+     *
+     * @param  int $company_id companyId (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllUsersByCompanyIdUsingGETAsyncWithHttpInfo($company_id)
+    {
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]';
+        $request = $this->getAllUsersByCompanyIdUsingGETRequest($company_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAllUsersByCompanyIdUsingGET'
+     *
+     * @param  int $company_id companyId (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAllUsersByCompanyIdUsingGETRequest($company_id)
+    {
+        // verify the required parameter 'company_id' is set
+        if ($company_id === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $company_id when calling getAllUsersByCompanyIdUsingGET'
+            );
+        }
+
+        $resourcePath = '/api/users/company/{companyId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($company_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'companyId' . '}',
+                ObjectSerializer::toPathValue($company_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1109,7 +1886,7 @@ class UserResourceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\User
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO
      */
     public function getUserUsingGET($login)
     {
@@ -1126,11 +1903,11 @@ class UserResourceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\User, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserUsingGETWithHttpInfo($login)
     {
-        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User';
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO';
         $request = $this->getUserUsingGETRequest($login);
 
         try {
@@ -1182,7 +1959,7 @@ class UserResourceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\User',
+                        '\Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1224,7 +2001,7 @@ class UserResourceApi
      */
     public function getUserUsingGETAsyncWithHttpInfo($login)
     {
-        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\User';
+        $returnType = '\Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO';
         $request = $this->getUserUsingGETRequest($login);
 
         return $this->client

@@ -59,6 +59,7 @@ class Offer implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'company' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Company',
         'id' => 'int',
+        'multiple_purchase' => 'bool',
         'name' => 'string',
         'open_ended' => 'bool',
         'price' => 'float',
@@ -76,6 +77,7 @@ class Offer implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'company' => null,
         'id' => 'int64',
+        'multiple_purchase' => null,
         'name' => null,
         'open_ended' => null,
         'price' => null,
@@ -114,6 +116,7 @@ class Offer implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'company' => 'company',
         'id' => 'id',
+        'multiple_purchase' => 'multiplePurchase',
         'name' => 'name',
         'open_ended' => 'openEnded',
         'price' => 'price',
@@ -131,6 +134,7 @@ class Offer implements ModelInterface, ArrayAccess
     protected static $setters = [
         'company' => 'setCompany',
         'id' => 'setId',
+        'multiple_purchase' => 'setMultiplePurchase',
         'name' => 'setName',
         'open_ended' => 'setOpenEnded',
         'price' => 'setPrice',
@@ -148,6 +152,7 @@ class Offer implements ModelInterface, ArrayAccess
     protected static $getters = [
         'company' => 'getCompany',
         'id' => 'getId',
+        'multiple_purchase' => 'getMultiplePurchase',
         'name' => 'getName',
         'open_ended' => 'getOpenEnded',
         'price' => 'getPrice',
@@ -219,6 +224,7 @@ class Offer implements ModelInterface, ArrayAccess
     {
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['multiple_purchase'] = isset($data['multiple_purchase']) ? $data['multiple_purchase'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['open_ended'] = isset($data['open_ended']) ? $data['open_ended'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
@@ -240,6 +246,9 @@ class Offer implements ModelInterface, ArrayAccess
         if ($this->container['company'] === null) {
             $invalidProperties[] = "'company' can't be null";
         }
+        if ($this->container['multiple_purchase'] === null) {
+            $invalidProperties[] = "'multiple_purchase' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -248,9 +257,6 @@ class Offer implements ModelInterface, ArrayAccess
         }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['recurrence'] === null) {
-            $invalidProperties[] = "'recurrence' can't be null";
         }
         return $invalidProperties;
     }
@@ -267,6 +273,9 @@ class Offer implements ModelInterface, ArrayAccess
         if ($this->container['company'] === null) {
             return false;
         }
+        if ($this->container['multiple_purchase'] === null) {
+            return false;
+        }
         if ($this->container['name'] === null) {
             return false;
         }
@@ -274,9 +283,6 @@ class Offer implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['price'] === null) {
-            return false;
-        }
-        if ($this->container['recurrence'] === null) {
             return false;
         }
         return true;
@@ -327,6 +333,30 @@ class Offer implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets multiple_purchase
+     *
+     * @return bool
+     */
+    public function getMultiplePurchase()
+    {
+        return $this->container['multiple_purchase'];
+    }
+
+    /**
+     * Sets multiple_purchase
+     *
+     * @param bool $multiple_purchase multiple_purchase
+     *
+     * @return $this
+     */
+    public function setMultiplePurchase($multiple_purchase)
+    {
+        $this->container['multiple_purchase'] = $multiple_purchase;
 
         return $this;
     }

@@ -57,7 +57,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'capacity' => 'float',
         'current_usage' => 'float',
         'end_date' => '\DateTime',
         'id' => 'int',
@@ -68,7 +67,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         'over_usage_quota' => 'float',
         'quota_origin' => 'string',
         'service_offering' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\ServiceOffering',
-        'service_type' => 'string',
         'start_date' => '\DateTime',
         'status' => 'string',
         'subscriber_id' => 'string',
@@ -83,7 +81,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'capacity' => null,
         'current_usage' => null,
         'end_date' => 'date-time',
         'id' => 'int64',
@@ -94,7 +91,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         'over_usage_quota' => null,
         'quota_origin' => null,
         'service_offering' => null,
-        'service_type' => null,
         'start_date' => 'date-time',
         'status' => null,
         'subscriber_id' => null,
@@ -130,7 +126,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'capacity' => 'capacity',
         'current_usage' => 'currentUsage',
         'end_date' => 'endDate',
         'id' => 'id',
@@ -141,7 +136,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         'over_usage_quota' => 'overUsageQuota',
         'quota_origin' => 'quotaOrigin',
         'service_offering' => 'serviceOffering',
-        'service_type' => 'serviceType',
         'start_date' => 'startDate',
         'status' => 'status',
         'subscriber_id' => 'subscriberId',
@@ -156,7 +150,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'capacity' => 'setCapacity',
         'current_usage' => 'setCurrentUsage',
         'end_date' => 'setEndDate',
         'id' => 'setId',
@@ -167,7 +160,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         'over_usage_quota' => 'setOverUsageQuota',
         'quota_origin' => 'setQuotaOrigin',
         'service_offering' => 'setServiceOffering',
-        'service_type' => 'setServiceType',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'subscriber_id' => 'setSubscriberId',
@@ -182,7 +174,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'capacity' => 'getCapacity',
         'current_usage' => 'getCurrentUsage',
         'end_date' => 'getEndDate',
         'id' => 'getId',
@@ -193,7 +184,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         'over_usage_quota' => 'getOverUsageQuota',
         'quota_origin' => 'getQuotaOrigin',
         'service_offering' => 'getServiceOffering',
-        'service_type' => 'getServiceType',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'subscriber_id' => 'getSubscriberId',
@@ -245,9 +235,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
 
     const QUOTA_ORIGIN_SUBS = 'SUBS';
     const QUOTA_ORIGIN_OVER = 'OVER';
-    const SERVICE_TYPE_ONOFF = 'ONOFF';
-    const SERVICE_TYPE_SEAT_BASED = 'SEAT_BASED';
-    const SERVICE_TYPE_USAGE_BASED = 'USAGE_BASED';
     const STATUS__NEW = 'NEW';
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_SUSPENDED = 'SUSPENDED';
@@ -269,20 +256,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         return [
             self::QUOTA_ORIGIN_SUBS,
             self::QUOTA_ORIGIN_OVER,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getServiceTypeAllowableValues()
-    {
-        return [
-            self::SERVICE_TYPE_ONOFF,
-            self::SERVICE_TYPE_SEAT_BASED,
-            self::SERVICE_TYPE_USAGE_BASED,
         ];
     }
     
@@ -332,7 +305,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['capacity'] = isset($data['capacity']) ? $data['capacity'] : null;
         $this->container['current_usage'] = isset($data['current_usage']) ? $data['current_usage'] : null;
         $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
@@ -343,7 +315,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         $this->container['over_usage_quota'] = isset($data['over_usage_quota']) ? $data['over_usage_quota'] : null;
         $this->container['quota_origin'] = isset($data['quota_origin']) ? $data['quota_origin'] : null;
         $this->container['service_offering'] = isset($data['service_offering']) ? $data['service_offering'] : null;
-        $this->container['service_type'] = isset($data['service_type']) ? $data['service_type'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['subscriber_id'] = isset($data['subscriber_id']) ? $data['subscriber_id'] : null;
@@ -365,14 +336,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         if (!in_array($this->container['quota_origin'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'quota_origin', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getServiceTypeAllowableValues();
-        if (!in_array($this->container['service_type'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'service_type', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -409,10 +372,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         if (!in_array($this->container['quota_origin'], $allowedValues)) {
             return false;
         }
-        $allowedValues = $this->getServiceTypeAllowableValues();
-        if (!in_array($this->container['service_type'], $allowedValues)) {
-            return false;
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($this->container['status'], $allowedValues)) {
             return false;
@@ -424,30 +383,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
         return true;
     }
 
-
-    /**
-     * Gets capacity
-     *
-     * @return float
-     */
-    public function getCapacity()
-    {
-        return $this->container['capacity'];
-    }
-
-    /**
-     * Sets capacity
-     *
-     * @param float $capacity capacity
-     *
-     * @return $this
-     */
-    public function setCapacity($capacity)
-    {
-        $this->container['capacity'] = $capacity;
-
-        return $this;
-    }
 
     /**
      * Gets current_usage
@@ -694,39 +629,6 @@ class ServiceInstance implements ModelInterface, ArrayAccess
     public function setServiceOffering($service_offering)
     {
         $this->container['service_offering'] = $service_offering;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_type
-     *
-     * @return string
-     */
-    public function getServiceType()
-    {
-        return $this->container['service_type'];
-    }
-
-    /**
-     * Sets service_type
-     *
-     * @param string $service_type service_type
-     *
-     * @return $this
-     */
-    public function setServiceType($service_type)
-    {
-        $allowedValues = $this->getServiceTypeAllowableValues();
-        if (!is_null($service_type) && !in_array($service_type, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'service_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['service_type'] = $service_type;
 
         return $this;
     }

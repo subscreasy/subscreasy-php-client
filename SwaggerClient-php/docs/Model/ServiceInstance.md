@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capacity** | **float** |  | [optional] 
 **current_usage** | **float** |  | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **id** | **int** |  | [optional] 
@@ -14,7 +13,6 @@ Name | Type | Description | Notes
 **over_usage_quota** | **float** |  | [optional] 
 **quota_origin** | **string** |  | [optional] 
 **service_offering** | [**\Swagger\Client\com.kodfarki.subscreasy.client.model\ServiceOffering**](ServiceOffering.md) |  | [optional] 
-**service_type** | **string** |  | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **status** | **string** |  | [optional] 
 **subscriber_id** | **string** |  | [optional] 

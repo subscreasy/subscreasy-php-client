@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **card_alias** | **string** |  | [optional] 
 **card_expiry** | **string** |  | [optional] 
+**card_family** | **string** |  | [optional] 
 **card_holder_name** | **string** |  | [optional] 
 **card_number** | **string** |  | [optional] 
 **card_token** | **string** |  | [optional] 

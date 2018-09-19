@@ -5,10 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **company** | [**\Swagger\Client\com.kodfarki.subscreasy.client.model\Company**](Company.md) |  | 
 **id** | **int** |  | [optional] 
+**multiple_purchase** | **bool** |  | 
 **name** | **string** |  | 
 **open_ended** | **bool** |  | 
 **price** | **float** |  | 
-**recurrence** | [**\Swagger\Client\com.kodfarki.subscreasy.client.model\RecurrencePeriod**](RecurrencePeriod.md) |  | 
+**recurrence** | [**\Swagger\Client\com.kodfarki.subscreasy.client.model\RecurrencePeriod**](RecurrencePeriod.md) |  | [optional] 
 **recurrence_count** | **int** |  | [optional] 
 **secure_id** | **string** |  | [optional] 
 **trial_period** | **int** |  | [optional] 

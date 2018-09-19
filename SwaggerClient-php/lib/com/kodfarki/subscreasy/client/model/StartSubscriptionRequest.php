@@ -57,11 +57,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'api_key' => 'string',
         'callback_url' => 'string',
+        'company_site_name' => 'string',
         'coupon_code' => 'string',
-        'offer' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionPlan',
+        'editable' => 'bool',
+        'offer' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Offer',
         'payment_card' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\PaymentCard',
+        'payment_type' => 'string',
+        'price' => 'float',
+        'privacy_policy_url' => 'bool',
         'subscriber' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber'
     ];
 
@@ -71,11 +75,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'api_key' => null,
         'callback_url' => null,
+        'company_site_name' => null,
         'coupon_code' => null,
+        'editable' => null,
         'offer' => null,
         'payment_card' => null,
+        'payment_type' => null,
+        'price' => null,
+        'privacy_policy_url' => null,
         'subscriber' => null
     ];
 
@@ -106,11 +114,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'api_key' => 'apiKey',
         'callback_url' => 'callbackUrl',
+        'company_site_name' => 'companySiteName',
         'coupon_code' => 'couponCode',
+        'editable' => 'editable',
         'offer' => 'offer',
         'payment_card' => 'paymentCard',
+        'payment_type' => 'paymentType',
+        'price' => 'price',
+        'privacy_policy_url' => 'privacyPolicyUrl',
         'subscriber' => 'subscriber'
     ];
 
@@ -120,11 +132,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'api_key' => 'setApiKey',
         'callback_url' => 'setCallbackUrl',
+        'company_site_name' => 'setCompanySiteName',
         'coupon_code' => 'setCouponCode',
+        'editable' => 'setEditable',
         'offer' => 'setOffer',
         'payment_card' => 'setPaymentCard',
+        'payment_type' => 'setPaymentType',
+        'price' => 'setPrice',
+        'privacy_policy_url' => 'setPrivacyPolicyUrl',
         'subscriber' => 'setSubscriber'
     ];
 
@@ -134,11 +150,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'api_key' => 'getApiKey',
         'callback_url' => 'getCallbackUrl',
+        'company_site_name' => 'getCompanySiteName',
         'coupon_code' => 'getCouponCode',
+        'editable' => 'getEditable',
         'offer' => 'getOffer',
         'payment_card' => 'getPaymentCard',
+        'payment_type' => 'getPaymentType',
+        'price' => 'getPrice',
+        'privacy_policy_url' => 'getPrivacyPolicyUrl',
         'subscriber' => 'getSubscriber'
     ];
 
@@ -183,8 +203,23 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const PAYMENT_TYPE_OFFLINE = 'OFFLINE';
+    const PAYMENT_TYPE_CC = 'CC';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPaymentTypeAllowableValues()
+    {
+        return [
+            self::PAYMENT_TYPE_OFFLINE,
+            self::PAYMENT_TYPE_CC,
+        ];
+    }
     
 
     /**
@@ -202,11 +237,15 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['api_key'] = isset($data['api_key']) ? $data['api_key'] : null;
         $this->container['callback_url'] = isset($data['callback_url']) ? $data['callback_url'] : null;
+        $this->container['company_site_name'] = isset($data['company_site_name']) ? $data['company_site_name'] : null;
         $this->container['coupon_code'] = isset($data['coupon_code']) ? $data['coupon_code'] : null;
+        $this->container['editable'] = isset($data['editable']) ? $data['editable'] : null;
         $this->container['offer'] = isset($data['offer']) ? $data['offer'] : null;
         $this->container['payment_card'] = isset($data['payment_card']) ? $data['payment_card'] : null;
+        $this->container['payment_type'] = isset($data['payment_type']) ? $data['payment_type'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['privacy_policy_url'] = isset($data['privacy_policy_url']) ? $data['privacy_policy_url'] : null;
         $this->container['subscriber'] = isset($data['subscriber']) ? $data['subscriber'] : null;
     }
 
@@ -218,6 +257,14 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPaymentTypeAllowableValues();
+        if (!in_array($this->container['payment_type'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'payment_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -231,33 +278,13 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        $allowedValues = $this->getPaymentTypeAllowableValues();
+        if (!in_array($this->container['payment_type'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
-
-    /**
-     * Gets api_key
-     *
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->container['api_key'];
-    }
-
-    /**
-     * Sets api_key
-     *
-     * @param string $api_key api_key
-     *
-     * @return $this
-     */
-    public function setApiKey($api_key)
-    {
-        $this->container['api_key'] = $api_key;
-
-        return $this;
-    }
 
     /**
      * Gets callback_url
@@ -279,6 +306,30 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     public function setCallbackUrl($callback_url)
     {
         $this->container['callback_url'] = $callback_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_site_name
+     *
+     * @return string
+     */
+    public function getCompanySiteName()
+    {
+        return $this->container['company_site_name'];
+    }
+
+    /**
+     * Sets company_site_name
+     *
+     * @param string $company_site_name company_site_name
+     *
+     * @return $this
+     */
+    public function setCompanySiteName($company_site_name)
+    {
+        $this->container['company_site_name'] = $company_site_name;
 
         return $this;
     }
@@ -308,9 +359,33 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets editable
+     *
+     * @return bool
+     */
+    public function getEditable()
+    {
+        return $this->container['editable'];
+    }
+
+    /**
+     * Sets editable
+     *
+     * @param bool $editable editable
+     *
+     * @return $this
+     */
+    public function setEditable($editable)
+    {
+        $this->container['editable'] = $editable;
+
+        return $this;
+    }
+
+    /**
      * Gets offer
      *
-     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionPlan
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\Offer
      */
     public function getOffer()
     {
@@ -320,7 +395,7 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     /**
      * Sets offer
      *
-     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionPlan $offer offer
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\Offer $offer offer
      *
      * @return $this
      */
@@ -351,6 +426,87 @@ class StartSubscriptionRequest implements ModelInterface, ArrayAccess
     public function setPaymentCard($payment_card)
     {
         $this->container['payment_card'] = $payment_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_type
+     *
+     * @return string
+     */
+    public function getPaymentType()
+    {
+        return $this->container['payment_type'];
+    }
+
+    /**
+     * Sets payment_type
+     *
+     * @param string $payment_type payment_type
+     *
+     * @return $this
+     */
+    public function setPaymentType($payment_type)
+    {
+        $allowedValues = $this->getPaymentTypeAllowableValues();
+        if (!is_null($payment_type) && !in_array($payment_type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'payment_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_type'] = $payment_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param float $price price
+     *
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets privacy_policy_url
+     *
+     * @return bool
+     */
+    public function getPrivacyPolicyUrl()
+    {
+        return $this->container['privacy_policy_url'];
+    }
+
+    /**
+     * Sets privacy_policy_url
+     *
+     * @param bool $privacy_policy_url privacy_policy_url
+     *
+     * @return $this
+     */
+    public function setPrivacyPolicyUrl($privacy_policy_url)
+    {
+        $this->container['privacy_policy_url'] = $privacy_policy_url;
 
         return $this;
     }

@@ -63,13 +63,17 @@ class Subsription implements ModelInterface, ArrayAccess
         'company' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Company',
         'end_date' => '\DateTime',
         'id' => 'int',
-        'next_charging_date' => '\DateTime',
+        'last_event' => 'string',
         'offer' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Offer',
+        'payment_method' => 'string',
         'services' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\ServiceInstance[]',
         'start_date' => '\DateTime',
         'status' => 'string',
-        'subscriber_id' => 'string',
-        'version' => 'int'
+        'subscriber' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber',
+        'subscriber_secure_id' => 'string',
+        'term_end_date' => '\DateTime',
+        'term_start_date' => '\DateTime',
+        'trial_end_date' => '\DateTime'
     ];
 
     /**
@@ -84,13 +88,17 @@ class Subsription implements ModelInterface, ArrayAccess
         'company' => null,
         'end_date' => 'date-time',
         'id' => 'int64',
-        'next_charging_date' => 'date-time',
+        'last_event' => null,
         'offer' => null,
+        'payment_method' => null,
         'services' => null,
         'start_date' => 'date-time',
         'status' => null,
-        'subscriber_id' => null,
-        'version' => 'int64'
+        'subscriber' => null,
+        'subscriber_secure_id' => null,
+        'term_end_date' => 'date-time',
+        'term_start_date' => 'date-time',
+        'trial_end_date' => 'date-time'
     ];
 
     /**
@@ -126,13 +134,17 @@ class Subsription implements ModelInterface, ArrayAccess
         'company' => 'company',
         'end_date' => 'endDate',
         'id' => 'id',
-        'next_charging_date' => 'nextChargingDate',
+        'last_event' => 'lastEvent',
         'offer' => 'offer',
+        'payment_method' => 'paymentMethod',
         'services' => 'services',
         'start_date' => 'startDate',
         'status' => 'status',
-        'subscriber_id' => 'subscriberId',
-        'version' => 'version'
+        'subscriber' => 'subscriber',
+        'subscriber_secure_id' => 'subscriberSecureId',
+        'term_end_date' => 'termEndDate',
+        'term_start_date' => 'termStartDate',
+        'trial_end_date' => 'trialEndDate'
     ];
 
     /**
@@ -147,13 +159,17 @@ class Subsription implements ModelInterface, ArrayAccess
         'company' => 'setCompany',
         'end_date' => 'setEndDate',
         'id' => 'setId',
-        'next_charging_date' => 'setNextChargingDate',
+        'last_event' => 'setLastEvent',
         'offer' => 'setOffer',
+        'payment_method' => 'setPaymentMethod',
         'services' => 'setServices',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
-        'subscriber_id' => 'setSubscriberId',
-        'version' => 'setVersion'
+        'subscriber' => 'setSubscriber',
+        'subscriber_secure_id' => 'setSubscriberSecureId',
+        'term_end_date' => 'setTermEndDate',
+        'term_start_date' => 'setTermStartDate',
+        'trial_end_date' => 'setTrialEndDate'
     ];
 
     /**
@@ -168,13 +184,17 @@ class Subsription implements ModelInterface, ArrayAccess
         'company' => 'getCompany',
         'end_date' => 'getEndDate',
         'id' => 'getId',
-        'next_charging_date' => 'getNextChargingDate',
+        'last_event' => 'getLastEvent',
         'offer' => 'getOffer',
+        'payment_method' => 'getPaymentMethod',
         'services' => 'getServices',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
-        'subscriber_id' => 'getSubscriberId',
-        'version' => 'getVersion'
+        'subscriber' => 'getSubscriber',
+        'subscriber_secure_id' => 'getSubscriberSecureId',
+        'term_end_date' => 'getTermEndDate',
+        'term_start_date' => 'getTermStartDate',
+        'trial_end_date' => 'getTrialEndDate'
     ];
 
     /**
@@ -218,6 +238,19 @@ class Subsription implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const LAST_EVENT_STARTED = 'STARTED';
+    const LAST_EVENT_RENEWED = 'RENEWED';
+    const LAST_EVENT_RENEWAL_FAILED = 'RENEWAL_FAILED';
+    const LAST_EVENT_FINISHED = 'FINISHED';
+    const LAST_EVENT_CANCELLED = 'CANCELLED';
+    const LAST_EVENT_SUBSCRIBER_CREATED = 'SUBSCRIBER_CREATED';
+    const LAST_EVENT_SUBSCRIBER_UPDATED = 'SUBSCRIBER_UPDATED';
+    const LAST_EVENT_TRIAL_ENDING = 'TRIAL_ENDING';
+    const LAST_EVENT_PAYMENT_UPDATED = 'PAYMENT_UPDATED';
+    const LAST_EVENT_IMMEDIATE_CANCELLATION_REQUESTED = 'IMMEDIATE_CANCELLATION_REQUESTED';
+    const LAST_EVENT_ENDOFPERIOD_CANCELLATION_REQUESTED = 'ENDOFPERIOD_CANCELLATION_REQUESTED';
+    const PAYMENT_METHOD_OFFLINE = 'OFFLINE';
+    const PAYMENT_METHOD_CC = 'CC';
     const STATUS__NEW = 'NEW';
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_SUSPENDED = 'SUSPENDED';
@@ -225,6 +258,41 @@ class Subsription implements ModelInterface, ArrayAccess
     const STATUS_CANCELLED = 'CANCELLED';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLastEventAllowableValues()
+    {
+        return [
+            self::LAST_EVENT_STARTED,
+            self::LAST_EVENT_RENEWED,
+            self::LAST_EVENT_RENEWAL_FAILED,
+            self::LAST_EVENT_FINISHED,
+            self::LAST_EVENT_CANCELLED,
+            self::LAST_EVENT_SUBSCRIBER_CREATED,
+            self::LAST_EVENT_SUBSCRIBER_UPDATED,
+            self::LAST_EVENT_TRIAL_ENDING,
+            self::LAST_EVENT_PAYMENT_UPDATED,
+            self::LAST_EVENT_IMMEDIATE_CANCELLATION_REQUESTED,
+            self::LAST_EVENT_ENDOFPERIOD_CANCELLATION_REQUESTED,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPaymentMethodAllowableValues()
+    {
+        return [
+            self::PAYMENT_METHOD_OFFLINE,
+            self::PAYMENT_METHOD_CC,
+        ];
+    }
     
     /**
      * Gets allowable values of the enum
@@ -264,13 +332,17 @@ class Subsription implements ModelInterface, ArrayAccess
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['next_charging_date'] = isset($data['next_charging_date']) ? $data['next_charging_date'] : null;
+        $this->container['last_event'] = isset($data['last_event']) ? $data['last_event'] : null;
         $this->container['offer'] = isset($data['offer']) ? $data['offer'] : null;
+        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
         $this->container['services'] = isset($data['services']) ? $data['services'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['subscriber_id'] = isset($data['subscriber_id']) ? $data['subscriber_id'] : null;
-        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
+        $this->container['subscriber'] = isset($data['subscriber']) ? $data['subscriber'] : null;
+        $this->container['subscriber_secure_id'] = isset($data['subscriber_secure_id']) ? $data['subscriber_secure_id'] : null;
+        $this->container['term_end_date'] = isset($data['term_end_date']) ? $data['term_end_date'] : null;
+        $this->container['term_start_date'] = isset($data['term_start_date']) ? $data['term_start_date'] : null;
+        $this->container['trial_end_date'] = isset($data['trial_end_date']) ? $data['trial_end_date'] : null;
     }
 
     /**
@@ -285,9 +357,25 @@ class Subsription implements ModelInterface, ArrayAccess
         if ($this->container['company'] === null) {
             $invalidProperties[] = "'company' can't be null";
         }
+        $allowedValues = $this->getLastEventAllowableValues();
+        if (!in_array($this->container['last_event'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'last_event', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['offer'] === null) {
             $invalidProperties[] = "'offer' can't be null";
         }
+        $allowedValues = $this->getPaymentMethodAllowableValues();
+        if (!in_array($this->container['payment_method'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'payment_method', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($this->container['status'], $allowedValues)) {
             $invalidProperties[] = sprintf(
@@ -311,7 +399,15 @@ class Subsription implements ModelInterface, ArrayAccess
         if ($this->container['company'] === null) {
             return false;
         }
+        $allowedValues = $this->getLastEventAllowableValues();
+        if (!in_array($this->container['last_event'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['offer'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getPaymentMethodAllowableValues();
+        if (!in_array($this->container['payment_method'], $allowedValues)) {
             return false;
         }
         $allowedValues = $this->getStatusAllowableValues();
@@ -467,25 +563,34 @@ class Subsription implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets next_charging_date
+     * Gets last_event
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getNextChargingDate()
+    public function getLastEvent()
     {
-        return $this->container['next_charging_date'];
+        return $this->container['last_event'];
     }
 
     /**
-     * Sets next_charging_date
+     * Sets last_event
      *
-     * @param \DateTime $next_charging_date next_charging_date
+     * @param string $last_event last_event
      *
      * @return $this
      */
-    public function setNextChargingDate($next_charging_date)
+    public function setLastEvent($last_event)
     {
-        $this->container['next_charging_date'] = $next_charging_date;
+        $allowedValues = $this->getLastEventAllowableValues();
+        if (!is_null($last_event) && !in_array($last_event, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'last_event', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['last_event'] = $last_event;
 
         return $this;
     }
@@ -510,6 +615,39 @@ class Subsription implements ModelInterface, ArrayAccess
     public function setOffer($offer)
     {
         $this->container['offer'] = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method
+     *
+     * @return string
+     */
+    public function getPaymentMethod()
+    {
+        return $this->container['payment_method'];
+    }
+
+    /**
+     * Sets payment_method
+     *
+     * @param string $payment_method payment_method
+     *
+     * @return $this
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        $allowedValues = $this->getPaymentMethodAllowableValues();
+        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'payment_method', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_method'] = $payment_method;
 
         return $this;
     }
@@ -596,49 +734,121 @@ class Subsription implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets subscriber_id
+     * Gets subscriber
      *
-     * @return string
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber
      */
-    public function getSubscriberId()
+    public function getSubscriber()
     {
-        return $this->container['subscriber_id'];
+        return $this->container['subscriber'];
     }
 
     /**
-     * Sets subscriber_id
+     * Sets subscriber
      *
-     * @param string $subscriber_id subscriber_id
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber $subscriber subscriber
      *
      * @return $this
      */
-    public function setSubscriberId($subscriber_id)
+    public function setSubscriber($subscriber)
     {
-        $this->container['subscriber_id'] = $subscriber_id;
+        $this->container['subscriber'] = $subscriber;
 
         return $this;
     }
 
     /**
-     * Gets version
+     * Gets subscriber_secure_id
      *
-     * @return int
+     * @return string
      */
-    public function getVersion()
+    public function getSubscriberSecureId()
     {
-        return $this->container['version'];
+        return $this->container['subscriber_secure_id'];
     }
 
     /**
-     * Sets version
+     * Sets subscriber_secure_id
      *
-     * @param int $version version
+     * @param string $subscriber_secure_id subscriber_secure_id
      *
      * @return $this
      */
-    public function setVersion($version)
+    public function setSubscriberSecureId($subscriber_secure_id)
     {
-        $this->container['version'] = $version;
+        $this->container['subscriber_secure_id'] = $subscriber_secure_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets term_end_date
+     *
+     * @return \DateTime
+     */
+    public function getTermEndDate()
+    {
+        return $this->container['term_end_date'];
+    }
+
+    /**
+     * Sets term_end_date
+     *
+     * @param \DateTime $term_end_date term_end_date
+     *
+     * @return $this
+     */
+    public function setTermEndDate($term_end_date)
+    {
+        $this->container['term_end_date'] = $term_end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets term_start_date
+     *
+     * @return \DateTime
+     */
+    public function getTermStartDate()
+    {
+        return $this->container['term_start_date'];
+    }
+
+    /**
+     * Sets term_start_date
+     *
+     * @param \DateTime $term_start_date term_start_date
+     *
+     * @return $this
+     */
+    public function setTermStartDate($term_start_date)
+    {
+        $this->container['term_start_date'] = $term_start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets trial_end_date
+     *
+     * @return \DateTime
+     */
+    public function getTrialEndDate()
+    {
+        return $this->container['trial_end_date'];
+    }
+
+    /**
+     * Sets trial_end_date
+     *
+     * @param \DateTime $trial_end_date trial_end_date
+     *
+     * @return $this
+     */
+    public function setTrialEndDate($trial_end_date)
+    {
+        $this->container['trial_end_date'] = $trial_end_date;
 
         return $this;
     }

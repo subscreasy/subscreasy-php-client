@@ -58,6 +58,7 @@ class Cancellation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'cancellation_type' => 'string',
+        'subscriber_id' => 'int',
         'subscription_id' => 'int'
     ];
 
@@ -68,6 +69,7 @@ class Cancellation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'cancellation_type' => null,
+        'subscriber_id' => 'int64',
         'subscription_id' => 'int64'
     ];
 
@@ -99,6 +101,7 @@ class Cancellation implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'cancellation_type' => 'cancellationType',
+        'subscriber_id' => 'subscriberId',
         'subscription_id' => 'subscriptionId'
     ];
 
@@ -109,6 +112,7 @@ class Cancellation implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'cancellation_type' => 'setCancellationType',
+        'subscriber_id' => 'setSubscriberId',
         'subscription_id' => 'setSubscriptionId'
     ];
 
@@ -119,6 +123,7 @@ class Cancellation implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'cancellation_type' => 'getCancellationType',
+        'subscriber_id' => 'getSubscriberId',
         'subscription_id' => 'getSubscriptionId'
     ];
 
@@ -198,6 +203,7 @@ class Cancellation implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['cancellation_type'] = isset($data['cancellation_type']) ? $data['cancellation_type'] : null;
+        $this->container['subscriber_id'] = isset($data['subscriber_id']) ? $data['subscriber_id'] : null;
         $this->container['subscription_id'] = isset($data['subscription_id']) ? $data['subscription_id'] : null;
     }
 
@@ -267,6 +273,30 @@ class Cancellation implements ModelInterface, ArrayAccess
             );
         }
         $this->container['cancellation_type'] = $cancellation_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriber_id
+     *
+     * @return int
+     */
+    public function getSubscriberId()
+    {
+        return $this->container['subscriber_id'];
+    }
+
+    /**
+     * Sets subscriber_id
+     *
+     * @param int $subscriber_id subscriber_id
+     *
+     * @return $this
+     */
+    public function setSubscriberId($subscriber_id)
+    {
+        $this->container['subscriber_id'] = $subscriber_id;
 
         return $this;
     }

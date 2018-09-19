@@ -67,11 +67,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         'id' => 'int',
         'invoice_id' => 'int',
         'job_id' => 'int',
-        'parent' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\ChargingLog',
+        'offer_id' => 'int',
+        'parent_id' => 'int',
         'payment_gateway' => 'string',
         'payment_id' => 'string',
         'price' => 'float',
         'reason' => 'string',
+        'saved_card' => '\Swagger\Client\com.kodfarki.subscreasy.client.model\SavedCard',
+        'saved_card_id' => 'int',
         'service_instance_id' => 'int',
         'status' => 'string',
         'subscriber_secure_id' => 'string',
@@ -95,11 +98,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'invoice_id' => 'int64',
         'job_id' => 'int64',
-        'parent' => null,
+        'offer_id' => 'int64',
+        'parent_id' => 'int64',
         'payment_gateway' => null,
         'payment_id' => null,
         'price' => null,
         'reason' => null,
+        'saved_card' => null,
+        'saved_card_id' => 'int64',
         'service_instance_id' => 'int64',
         'status' => null,
         'subscriber_secure_id' => null,
@@ -144,11 +150,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         'id' => 'id',
         'invoice_id' => 'invoiceId',
         'job_id' => 'jobId',
-        'parent' => 'parent',
+        'offer_id' => 'offerId',
+        'parent_id' => 'parentId',
         'payment_gateway' => 'paymentGateway',
         'payment_id' => 'paymentId',
         'price' => 'price',
         'reason' => 'reason',
+        'saved_card' => 'savedCard',
+        'saved_card_id' => 'savedCardId',
         'service_instance_id' => 'serviceInstanceId',
         'status' => 'status',
         'subscriber_secure_id' => 'subscriberSecureId',
@@ -172,11 +181,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'invoice_id' => 'setInvoiceId',
         'job_id' => 'setJobId',
-        'parent' => 'setParent',
+        'offer_id' => 'setOfferId',
+        'parent_id' => 'setParentId',
         'payment_gateway' => 'setPaymentGateway',
         'payment_id' => 'setPaymentId',
         'price' => 'setPrice',
         'reason' => 'setReason',
+        'saved_card' => 'setSavedCard',
+        'saved_card_id' => 'setSavedCardId',
         'service_instance_id' => 'setServiceInstanceId',
         'status' => 'setStatus',
         'subscriber_secure_id' => 'setSubscriberSecureId',
@@ -200,11 +212,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'invoice_id' => 'getInvoiceId',
         'job_id' => 'getJobId',
-        'parent' => 'getParent',
+        'offer_id' => 'getOfferId',
+        'parent_id' => 'getParentId',
         'payment_gateway' => 'getPaymentGateway',
         'payment_id' => 'getPaymentId',
         'price' => 'getPrice',
         'reason' => 'getReason',
+        'saved_card' => 'getSavedCard',
+        'saved_card_id' => 'getSavedCardId',
         'service_instance_id' => 'getServiceInstanceId',
         'status' => 'getStatus',
         'subscriber_secure_id' => 'getSubscriberSecureId',
@@ -256,12 +271,15 @@ class ChargingLog implements ModelInterface, ArrayAccess
     const PAYMENT_GATEWAY_OFFLINE = 'OFFLINE';
     const PAYMENT_GATEWAY_IYZICO = 'IYZICO';
     const PAYMENT_GATEWAY_PAYU = 'PAYU';
+    const PAYMENT_GATEWAY_PAYTR = 'PAYTR';
     const REASON_START = 'START';
     const REASON_RENEWAL = 'RENEWAL';
     const REASON_OVER_USAGE = 'OVER_USAGE';
     const REASON_REFUND = 'REFUND';
+    const REASON_SAVE_CARD = 'SAVE_CARD';
+    const REASON_TRIAL_PERIOD = 'TRIAL_PERIOD';
     const STATUS_NOT_PAID = 'NOT_PAID';
-    const STATUS_SUCCESS = 'SUCCESS';
+    const STATUS_PAID = 'PAID';
     const STATUS_FAIL = 'FAIL';
     const STATUS_REFUNDED = 'REFUNDED';
     
@@ -278,6 +296,7 @@ class ChargingLog implements ModelInterface, ArrayAccess
             self::PAYMENT_GATEWAY_OFFLINE,
             self::PAYMENT_GATEWAY_IYZICO,
             self::PAYMENT_GATEWAY_PAYU,
+            self::PAYMENT_GATEWAY_PAYTR,
         ];
     }
     
@@ -293,6 +312,8 @@ class ChargingLog implements ModelInterface, ArrayAccess
             self::REASON_RENEWAL,
             self::REASON_OVER_USAGE,
             self::REASON_REFUND,
+            self::REASON_SAVE_CARD,
+            self::REASON_TRIAL_PERIOD,
         ];
     }
     
@@ -305,7 +326,7 @@ class ChargingLog implements ModelInterface, ArrayAccess
     {
         return [
             self::STATUS_NOT_PAID,
-            self::STATUS_SUCCESS,
+            self::STATUS_PAID,
             self::STATUS_FAIL,
             self::STATUS_REFUNDED,
         ];
@@ -337,11 +358,14 @@ class ChargingLog implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['invoice_id'] = isset($data['invoice_id']) ? $data['invoice_id'] : null;
         $this->container['job_id'] = isset($data['job_id']) ? $data['job_id'] : null;
-        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
+        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
+        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
         $this->container['payment_gateway'] = isset($data['payment_gateway']) ? $data['payment_gateway'] : null;
         $this->container['payment_id'] = isset($data['payment_id']) ? $data['payment_id'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        $this->container['saved_card'] = isset($data['saved_card']) ? $data['saved_card'] : null;
+        $this->container['saved_card_id'] = isset($data['saved_card_id']) ? $data['saved_card_id'] : null;
         $this->container['service_instance_id'] = isset($data['service_instance_id']) ? $data['service_instance_id'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['subscriber_secure_id'] = isset($data['subscriber_secure_id']) ? $data['subscriber_secure_id'] : null;
@@ -651,25 +675,49 @@ class ChargingLog implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets parent
+     * Gets offer_id
      *
-     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\ChargingLog
+     * @return int
      */
-    public function getParent()
+    public function getOfferId()
     {
-        return $this->container['parent'];
+        return $this->container['offer_id'];
     }
 
     /**
-     * Sets parent
+     * Sets offer_id
      *
-     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\ChargingLog $parent parent
+     * @param int $offer_id offer_id
      *
      * @return $this
      */
-    public function setParent($parent)
+    public function setOfferId($offer_id)
     {
-        $this->container['parent'] = $parent;
+        $this->container['offer_id'] = $offer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return int
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param int $parent_id parent_id
+     *
+     * @return $this
+     */
+    public function setParentId($parent_id)
+    {
+        $this->container['parent_id'] = $parent_id;
 
         return $this;
     }
@@ -784,6 +832,54 @@ class ChargingLog implements ModelInterface, ArrayAccess
             );
         }
         $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets saved_card
+     *
+     * @return \Swagger\Client\com.kodfarki.subscreasy.client.model\SavedCard
+     */
+    public function getSavedCard()
+    {
+        return $this->container['saved_card'];
+    }
+
+    /**
+     * Sets saved_card
+     *
+     * @param \Swagger\Client\com.kodfarki.subscreasy.client.model\SavedCard $saved_card saved_card
+     *
+     * @return $this
+     */
+    public function setSavedCard($saved_card)
+    {
+        $this->container['saved_card'] = $saved_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets saved_card_id
+     *
+     * @return int
+     */
+    public function getSavedCardId()
+    {
+        return $this->container['saved_card_id'];
+    }
+
+    /**
+     * Sets saved_card_id
+     *
+     * @param int $saved_card_id saved_card_id
+     *
+     * @return $this
+     */
+    public function setSavedCardId($saved_card_id)
+    {
+        $this->container['saved_card_id'] = $saved_card_id;
 
         return $this;
     }

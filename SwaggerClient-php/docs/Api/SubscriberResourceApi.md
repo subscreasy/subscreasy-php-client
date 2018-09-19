@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getAllSubscribersUsingGET**](SubscriberResourceApi.md#getAllSubscribersUsingGET) | **GET** /api/subscribers | getAllSubscribers
 [**getSubscriberByEmailUsingGET**](SubscriberResourceApi.md#getSubscriberByEmailUsingGET) | **GET** /api/subscribers/email/{email} | getSubscriberByEmail
 [**getSubscriberByNameUsingGET**](SubscriberResourceApi.md#getSubscriberByNameUsingGET) | **GET** /api/subscribers/name/{name} | getSubscriberByName
+[**getSubscriberBySecureIdUsingGET**](SubscriberResourceApi.md#getSubscriberBySecureIdUsingGET) | **GET** /api/subscribers/secureId/{secureId} | getSubscriberBySecureId
 [**getSubscriberUsingGET**](SubscriberResourceApi.md#getSubscriberUsingGET) | **GET** /api/subscribers/{id} | getSubscriber
 [**updateSubscriberUsingPUT**](SubscriberResourceApi.md#updateSubscriberUsingPUT) | **PUT** /api/subscribers | updateSubscriber
 
@@ -119,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAllSubscribersUsingGET**
-> \Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber[] getAllSubscribersUsingGET()
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber[] getAllSubscribersUsingGET($page, $size, $sort)
 
 getAllSubscribers
 
@@ -139,9 +140,12 @@ $apiInstance = new Swagger\Client\Api\SubscriberResourceApi(
     new GuzzleHttp\Client(),
     $config
 );
+$page = 56; // int | Page number of the requested page
+$size = 56; // int | Size of a page
+$sort = array("sort_example"); // string[] | Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 
 try {
-    $result = $apiInstance->getAllSubscribersUsingGET();
+    $result = $apiInstance->getAllSubscribersUsingGET($page, $size, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriberResourceApi->getAllSubscribersUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -150,7 +154,12 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number of the requested page | [optional]
+ **size** | **int**| Size of a page | [optional]
+ **sort** | [**string[]**](../Model/string.md)| Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported. | [optional]
 
 ### Return type
 
@@ -261,6 +270,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber[]**](../Model/Subscriber.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getSubscriberBySecureIdUsingGET**
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber getSubscriberBySecureIdUsingGET($secure_id)
+
+getSubscriberBySecureId
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: apiKey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\SubscriberResourceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$secure_id = "secure_id_example"; // string | secureId
+
+try {
+    $result = $apiInstance->getSubscriberBySecureIdUsingGET($secure_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriberResourceApi->getSubscriberBySecureIdUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secure_id** | **string**| secureId |
+
+### Return type
+
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\Subscriber**](../Model/Subscriber.md)
 
 ### Authorization
 

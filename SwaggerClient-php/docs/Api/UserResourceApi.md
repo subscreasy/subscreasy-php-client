@@ -4,13 +4,69 @@ All URIs are relative to *https://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createCompanyUserUsingPOST**](UserResourceApi.md#createCompanyUserUsingPOST) | **POST** /api/users/company | createCompanyUser
 [**createUserUsingPOST**](UserResourceApi.md#createUserUsingPOST) | **POST** /api/users | createUser
 [**deleteUserUsingDELETE**](UserResourceApi.md#deleteUserUsingDELETE) | **DELETE** /api/users/{login} | deleteUser
+[**getAllUsersByAuthenticatedCompanyUsingGET**](UserResourceApi.md#getAllUsersByAuthenticatedCompanyUsingGET) | **GET** /api/users/company | getAllUsersByAuthenticatedCompany
+[**getAllUsersByCompanyIdUsingGET**](UserResourceApi.md#getAllUsersByCompanyIdUsingGET) | **GET** /api/users/company/{companyId} | getAllUsersByCompanyId
 [**getAllUsersUsingGET**](UserResourceApi.md#getAllUsersUsingGET) | **GET** /api/users | getAllUsers
 [**getAuthoritiesUsingGET**](UserResourceApi.md#getAuthoritiesUsingGET) | **GET** /api/users/authorities | getAuthorities
 [**getUserUsingGET**](UserResourceApi.md#getUserUsingGET) | **GET** /api/users/{login} | getUser
 [**updateUserUsingPUT**](UserResourceApi.md#updateUserUsingPUT) | **PUT** /api/users | updateUser
 
+
+# **createCompanyUserUsingPOST**
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity createCompanyUserUsingPOST($managed_user_vm)
+
+createCompanyUser
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: apiKey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\UserResourceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$managed_user_vm = new \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM(); // \Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM | managedUserVM
+
+try {
+    $result = $apiInstance->createCompanyUserUsingPOST($managed_user_vm);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserResourceApi->createCompanyUserUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **managed_user_vm** | [**\Swagger\Client\com.kodfarki.subscreasy.client.model\ManagedUserVM**](../Model/ManagedUserVM.md)| managedUserVM |
+
+### Return type
+
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity**](../Model/ResponseEntity.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createUserUsingPOST**
 > \Swagger\Client\com.kodfarki.subscreasy.client.model\ResponseEntity createUserUsingPOST($managed_user_vm)
@@ -105,6 +161,108 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getAllUsersByAuthenticatedCompanyUsingGET**
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\User[] getAllUsersByAuthenticatedCompanyUsingGET()
+
+getAllUsersByAuthenticatedCompany
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: apiKey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\UserResourceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getAllUsersByAuthenticatedCompanyUsingGET();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserResourceApi->getAllUsersByAuthenticatedCompanyUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]**](../Model/User.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getAllUsersByCompanyIdUsingGET**
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\User[] getAllUsersByCompanyIdUsingGET($company_id)
+
+getAllUsersByCompanyId
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: apiKey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\UserResourceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$company_id = 789; // int | companyId
+
+try {
+    $result = $apiInstance->getAllUsersByCompanyIdUsingGET($company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserResourceApi->getAllUsersByCompanyIdUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **company_id** | **int**| companyId |
+
+### Return type
+
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\User[]**](../Model/User.md)
 
 ### Authorization
 
@@ -224,7 +382,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getUserUsingGET**
-> \Swagger\Client\com.kodfarki.subscreasy.client.model\User getUserUsingGET($login)
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO getUserUsingGET($login)
 
 getUser
 
@@ -263,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\com.kodfarki.subscreasy.client.model\User**](../Model/User.md)
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\UserDTO**](../Model/UserDTO.md)
 
 ### Authorization
 

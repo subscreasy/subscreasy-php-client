@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **startSubscriptionUsingPOST**
-> \Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult startSubscriptionUsingPOST($request)
+> \Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult startSubscriptionUsingPOST($request)
 
 startSubscription
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\com.kodfarki.subscreasy.client.model\SubscriptionCreateResult**](../Model/SubscriptionCreateResult.md)
+[**\Swagger\Client\com.kodfarki.subscreasy.client.model\StartSubscriptionResult**](../Model/StartSubscriptionResult.md)
 
 ### Authorization
 

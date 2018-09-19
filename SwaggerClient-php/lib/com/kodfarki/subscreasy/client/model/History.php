@@ -170,8 +170,15 @@ class History implements ModelInterface, ArrayAccess
 
     const NAME_STARTED = 'STARTED';
     const NAME_RENEWED = 'RENEWED';
+    const NAME_RENEWAL_FAILED = 'RENEWAL_FAILED';
     const NAME_FINISHED = 'FINISHED';
     const NAME_CANCELLED = 'CANCELLED';
+    const NAME_SUBSCRIBER_CREATED = 'SUBSCRIBER_CREATED';
+    const NAME_SUBSCRIBER_UPDATED = 'SUBSCRIBER_UPDATED';
+    const NAME_TRIAL_ENDING = 'TRIAL_ENDING';
+    const NAME_PAYMENT_UPDATED = 'PAYMENT_UPDATED';
+    const NAME_IMMEDIATE_CANCELLATION_REQUESTED = 'IMMEDIATE_CANCELLATION_REQUESTED';
+    const NAME_ENDOFPERIOD_CANCELLATION_REQUESTED = 'ENDOFPERIOD_CANCELLATION_REQUESTED';
     
 
     
@@ -185,8 +192,15 @@ class History implements ModelInterface, ArrayAccess
         return [
             self::NAME_STARTED,
             self::NAME_RENEWED,
+            self::NAME_RENEWAL_FAILED,
             self::NAME_FINISHED,
             self::NAME_CANCELLED,
+            self::NAME_SUBSCRIBER_CREATED,
+            self::NAME_SUBSCRIBER_UPDATED,
+            self::NAME_TRIAL_ENDING,
+            self::NAME_PAYMENT_UPDATED,
+            self::NAME_IMMEDIATE_CANCELLATION_REQUESTED,
+            self::NAME_ENDOFPERIOD_CANCELLATION_REQUESTED,
         ];
     }
     

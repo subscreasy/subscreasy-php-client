@@ -72,7 +72,8 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         'last_name' => 'string',
         'login' => 'string',
         'password' => 'string',
-        'reset_date' => 'string'
+        'reset_date' => 'string',
+        'site_name' => 'string'
     ];
 
     /**
@@ -96,7 +97,8 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         'last_name' => null,
         'login' => null,
         'password' => null,
-        'reset_date' => null
+        'reset_date' => null,
+        'site_name' => null
     ];
 
     /**
@@ -141,7 +143,8 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         'last_name' => 'lastName',
         'login' => 'login',
         'password' => 'password',
-        'reset_date' => 'resetDate'
+        'reset_date' => 'resetDate',
+        'site_name' => 'siteName'
     ];
 
     /**
@@ -165,7 +168,8 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         'last_name' => 'setLastName',
         'login' => 'setLogin',
         'password' => 'setPassword',
-        'reset_date' => 'setResetDate'
+        'reset_date' => 'setResetDate',
+        'site_name' => 'setSiteName'
     ];
 
     /**
@@ -189,7 +193,8 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         'last_name' => 'getLastName',
         'login' => 'getLogin',
         'password' => 'getPassword',
-        'reset_date' => 'getResetDate'
+        'reset_date' => 'getResetDate',
+        'site_name' => 'getSiteName'
     ];
 
     /**
@@ -268,6 +273,7 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
         $this->container['login'] = isset($data['login']) ? $data['login'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
         $this->container['reset_date'] = isset($data['reset_date']) ? $data['reset_date'] : null;
+        $this->container['site_name'] = isset($data['site_name']) ? $data['site_name'] : null;
     }
 
     /**
@@ -342,6 +348,14 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'password', the character length must be bigger than or equal to 4.";
         }
 
+        if (!is_null($this->container['site_name']) && (strlen($this->container['site_name']) > 50)) {
+            $invalidProperties[] = "invalid value for 'site_name', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['site_name']) && (strlen($this->container['site_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'site_name', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -400,6 +414,12 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
             return false;
         }
         if (strlen($this->container['password']) < 4) {
+            return false;
+        }
+        if (strlen($this->container['site_name']) > 50) {
+            return false;
+        }
+        if (strlen($this->container['site_name']) < 1) {
             return false;
         }
         return true;
@@ -838,6 +858,37 @@ class ManagedUserVM implements ModelInterface, ArrayAccess
     public function setResetDate($reset_date)
     {
         $this->container['reset_date'] = $reset_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets site_name
+     *
+     * @return string
+     */
+    public function getSiteName()
+    {
+        return $this->container['site_name'];
+    }
+
+    /**
+     * Sets site_name
+     *
+     * @param string $site_name site_name
+     *
+     * @return $this
+     */
+    public function setSiteName($site_name)
+    {
+        if (!is_null($site_name) && (strlen($site_name) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $site_name when calling ManagedUserVM., must be smaller than or equal to 50.');
+        }
+        if (!is_null($site_name) && (strlen($site_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $site_name when calling ManagedUserVM., must be bigger than or equal to 1.');
+        }
+
+        $this->container['site_name'] = $site_name;
 
         return $this;
     }
